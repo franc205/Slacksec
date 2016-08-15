@@ -6,7 +6,7 @@ import struct, time
 
 def intallAll():
 	cmd = os.system("apt-get install -y wget git curl")
-	cmd = os.system("apt-get install -y aircrack-ng sqlmap arduino wireshark sslstrip nmap hping3 amap-align kismet reaver cutycapt binwalk john proxychains apktool nikto ettercap-graphical etherape netdiscover driftnet netcat bkhive ophcrack hydra dsniff wifite foremost galleta guymager p0f volatility funkload slowhttptest sslsplit btscanner wifite")
+	cmd = os.system("apt-get install -y aircrack-ng sqlmap arduino wireshark sslstrip nmap hping3 amap-align kismet reaver cutycapt binwalk john proxychains apktool nikto ettercap-graphical etherape netdiscover driftnet netcat bkhive ophcrack hydra dsniff wifite foremost galleta guymager p0f volatility funkload slowhttptest sslsplit btscanner wifite samdump2")
 	beef()
 	bluelog()
 	bluemaho()
@@ -273,10 +273,6 @@ def webshells():
 	cmd = os.system("apt-get install -y git")
 	cmd = os.system("git clone git://git.kali.org/packages/webshells.git /usr/share/webshells")
 
-def openvas():
-	cmd = os.system("apt-get install -y git")
-	cmd = os.system("git clone git://git.kali.org/packages/openvas.git /usr/share/openvas")	
-
 def main():
 	while True:
 		print '''
@@ -341,7 +337,7 @@ Welcome
 57) Bluesnarfer
 58) Evilgrade
 59) Webshells
-60) OpenVAS
+60) Samdump2
 
 		'''
 
@@ -505,7 +501,7 @@ Welcome
 		elif mainChoice == "59":
 			webshells()
 		elif mainChoice == "60":
-			openvas()
+			cmd = os.system("apt-get install -y samdump2")
 		else:
 			print "Please choose a valid option!!!"
 			time.sleep(2)
