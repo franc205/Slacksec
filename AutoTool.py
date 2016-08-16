@@ -6,7 +6,7 @@ import struct, time
 
 def intallAll():
 	cmd = os.system("apt-get install -y wget git curl")
-	cmd = os.system("apt-get install -y aircrack-ng sqlmap arduino wireshark sslstrip nmap hping3 amap-align kismet reaver cutycapt binwalk john proxychains apktool nikto ettercap-graphical etherape netdiscover driftnet netcat bkhive ophcrack hydra dsniff wifite foremost galleta guymager p0f volatility funkload slowhttptest sslsplit btscanner wifite samdump2")
+	cmd = os.system("apt-get install -y aircrack-ng sqlmap arduino wireshark sslstrip nmap hping3 amap-align kismet reaver cutycapt binwalk john proxychains apktool nikto ettercap-graphical etherape netdiscover driftnet netcat bkhive ophcrack hydra dsniff wifite foremost galleta guymager p0f volatility funkload slowhttptest sslsplit btscanner wifite samdump2 macchanger")
 	beef()
 	bluelog()
 	bluemaho()
@@ -14,6 +14,7 @@ def intallAll():
 	blueranger()
 	burpsuite()
 	casefile()
+	crozono()
 	dirbuster()
 	evilgrade()
 	exploitdb()
@@ -22,7 +23,6 @@ def intallAll():
 	hashcat()
 	maltego()
 	metasploit()
-	openvas()
 	pixieWPS()
 	reconNG()
 	setoolkit()
@@ -273,6 +273,21 @@ def webshells():
 	cmd = os.system("apt-get install -y git")
 	cmd = os.system("git clone git://git.kali.org/packages/webshells.git /usr/share/webshells")
 
+def crozono():
+	cmd = os.system("apt-get install -y git aircrack-ng reaver macchanger")
+	cmd = os.system("pip install --upgrade pip")
+	cmd = os.system("git clone https://github.com/crozono/crozono-free.git /usr/share/crozono")
+	cmd = os.system("cd /usr/share/crozono && pip install -r requirements.txt")
+	cmd = os.system("chmod +x /usr/share/crozono/crozono.py")
+	#cmd = os.system("ln -s /usr/share/crozono/crozono.py /usr/bin/crozono")
+	
+def owaspZAP():
+	cmd = os.system("wget \"https://github.com/zaproxy/zaproxy/releases/download/2.5.0/ZAP_2.5.0_Linux.tar.gz\" -O OWASP_ZAP.tar.gz")
+	cmd = os.system("tar -xvzf OWASP_ZAP.tar.gz")
+	cmd = os.system("mv ZAP_2.5.0 /usr/share/owasp-zap")
+	cmd = os.system("rm -rf OWASP_ZAP.tar.gz")
+	cmd = os.system("ln -s /usr/share/owasp-zap/zap.sh /usr/bin/owasp-zap")
+	
 def main():
 	while True:
 		print '''
@@ -338,7 +353,9 @@ Welcome
 58) Evilgrade
 59) Webshells
 60) Samdump2
-
+61) Crozono
+62) Macchanger
+63) OWASP ZAP
 		'''
 
 		mainChoice = raw_input("Choose an option: ")
@@ -502,6 +519,12 @@ Welcome
 			webshells()
 		elif mainChoice == "60":
 			cmd = os.system("apt-get install -y samdump2")
+		elif mainChoice == "61":
+			crozono()
+		elif mainChoice == "62":
+			cmd = os.system("apt-get install -y macchanger")
+		elif mainChoice == "63":
+			owaspZAP()
 		else:
 			print "Please choose a valid option!!!"
 			time.sleep(2)
