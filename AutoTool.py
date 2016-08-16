@@ -268,10 +268,14 @@ def evilgrade():
 	dirbust.write("cd /usr/share/evilgrade/ && ./evilgrade")
 	dirbust.close()
 	cmd = os.system("chmod +x /usr/bin/evilgrade")
+	time.sleep(2)
+
 
 def webshells():
 	cmd = os.system("apt-get install -y git")
 	cmd = os.system("git clone git://git.kali.org/packages/webshells.git /usr/share/webshells")
+	time.sleep(2)
+
 
 def crozono():
 	cmd = os.system("apt-get install -y git aircrack-ng reaver macchanger")
@@ -280,14 +284,37 @@ def crozono():
 	cmd = os.system("cd /usr/share/crozono && pip install -r requirements.txt")
 	cmd = os.system("chmod +x /usr/share/crozono/crozono.py")
 	#cmd = os.system("ln -s /usr/share/crozono/crozono.py /usr/bin/crozono")
-	
+	time.sleep(2)
+
+
 def owaspZAP():
+	cmd = os.system("apt-get install -y wget")
 	cmd = os.system("wget \"https://github.com/zaproxy/zaproxy/releases/download/2.5.0/ZAP_2.5.0_Linux.tar.gz\" -O OWASP_ZAP.tar.gz")
 	cmd = os.system("tar -xvzf OWASP_ZAP.tar.gz")
 	cmd = os.system("mv ZAP_2.5.0 /usr/share/owasp-zap")
 	cmd = os.system("rm -rf OWASP_ZAP.tar.gz")
 	cmd = os.system("ln -s /usr/share/owasp-zap/zap.sh /usr/bin/owasp-zap")
+	time.sleep(2)
 	
+def vega():
+	cmd = os.system("apt-get install -y wget unzip libwebkitgtk-1.0")
+	if struct.calcsize("P") * 8 == 64:
+		cmd = os.system("wget \"https://dist.subgraph.com/downloads/VegaBuild-linux.gtk.x86_64.zip\" -O Vega.x64.zip")
+		cmd = os.system("unzip Vega.x64.zip")
+		cmd = os.system("mv vega /usr/share/vega")
+		cmd = os.system("rm -rf Vega.x64.zip")
+		cmd = os.system("ln -s /usr/share/vega/Vega /usr/bin/vega")
+		time.sleep(2)
+	elif struct.calcsize("P") * 8 == 32:
+		cmd = os.system("wget \"https://dist.subgraph.com/downloads/VegaBuild-linux.gtk.x86.zip\" -O Vega.x86.zip")
+		cmd = os.system("unzip Vega.x86.zip")
+		cmd = os.system("mv vega /usr/share/vega")
+		cmd = os.system("rm -rf Vega.x86.zip")
+		cmd = os.system("ln -s /usr/share/vega/Vega /usr/bin/vega")
+		time.sleep(2)
+	else:
+		print "There has been a problem installing Vega!"
+		
 def main():
 	while True:
 		print '''
@@ -356,6 +383,7 @@ Welcome
 61) Crozono
 62) Macchanger
 63) OWASP ZAP
+64) Vega
 		'''
 
 		mainChoice = raw_input("Choose an option: ")
@@ -525,6 +553,8 @@ Welcome
 			cmd = os.system("apt-get install -y macchanger")
 		elif mainChoice == "63":
 			owaspZAP()
+		elif mainChoice == "64":
+			vega()
 		else:
 			print "Please choose a valid option!!!"
 			time.sleep(2)
