@@ -318,72 +318,111 @@ def vega():
 def main():
 	while True:
 		print '''
-Welcome
+
+  #####                               #####                
+ #     # #        ##    ####  #    # #     # ######  ####  
+ #       #       #  #  #    # #   #  #       #      #    # 
+  #####  #      #    # #      ####    #####  #####  #      
+       # #      ###### #      #  #         # #      #      
+ #     # #      #    # #    # #   #  #     # #      #    # 
+  #####  ###### #    #  ####  #    #  #####  ######  ####  
+												By Franc205
+ 
+--------------------------Choose a Category--------------------------
+1) Essential Tools							5) Exploitation Tools
+2) Wireless Tools							6) Password Attacks	
+3) Web Hacking Tools						7) Reporting Tools
+4) Sniffing & Spoofing						8) Extra
+
 0) All the tools
-1) Aircrack-NG
-2) SQLMap
-3) Maltego
-4) Casefile
-5) Arduino
-6) Wireshark
-7) SSLstrip
-8) NMap
-9) theHarvester
-10) hping3
-11) Recon-ng 
-12) SET 
-13) Amap
-14) ExploitDB
-15) Kismet
-16) PixieWPS
-17) Reaver
-18) Wifi Honey
-19) CutyCapt
-20) BurpSuite
-21) Dirbuster
-22) Websploit
-23) WPScaner
-24) Binwalk
-25) Faraday
-26) Metaspoit + Armitage
-27) BeEF
-28) Findmyhash
-29) John the ripper
-30) Proxychains
-31) Apktool
-32) Nikto
-33) Ettercap
-34) Etherape
-35) Netdiscover
-36) Driftnet
-37) Netcat
-38) Bkhive
-39) Ophcrack
-40) Hydra
-41) Dsniff
-42) Hashcat
-43) Wifite
-44) Foremost
-45) Galleta
-46) Guymager
-47) p0f
-48) Volatility
-49) Funkload
-50) SlowHTTPTest
-51) SSLSplit
-52) BTScanner
-53) Bluelog
-54) Bluemaho
-55) Bluepot
-56) Blueranger
-57) Bluesnarfer
-58) Evilgrade
-59) Webshells
-60) Samdump2
-61) Crozono
-62) Macchanger
-63) OWASP ZAP
-64) Vega
+
+
+---------------------------Essential Tools---------------------------
+1) Aircrack-NG									6) Netcat
+2) DSniff										7) Nmap
+3) Faraday										8) OWSAP Zap
+4) hping3										9) SET
+5) Metaspoit + Armitage							10) Wireshark
+
+
+---------------------------Wireless Tools----------------------------
+1) Aircrack-NG									8) Crozono
+2) Bluelog										9) Kismet
+3) Bluemaho										10) PixieWPS
+4) Bluepot										11) Reaver
+5) Blueranger									12) Wifite
+6) Bluesnarfer									13) Wifi Honey
+7) BTScanner		
+
+0) Install All
+
+---------------------------Web Hacking Tools----------------------------
+1) BurpSuite									10) SQLMap
+2) BeEF											11) SSLSplit
+3) Dirbuster									12) SSLstrip
+4) hping3										13) Vega
+5) Metaspoit + Armitage							14) Webshells
+6) NMap											15) Websploit
+7) Nikto										16) Wireshark
+8) OWASP ZAP									17) WPScaner
+9) Recon-ng
+
+0) Install All
+						 
+---------------------------Sniffing & Spoofing----------------------------
+1) Driftnet										6) Netdiscover
+2) Dsniff										7) SSLSplit
+3) Etherape										8) SSLstrip
+4) Ettercap										9) Wireshark
+5) Evilgrade                
+
+0) Install All
+
+----------------------------Exploitation Tools----------------------------
+1) BeEF											5) Maltego
+2) Evilgrade									6) Metaspoit + Armitage
+3) ExploitDB									7) SET
+4) Faraday										8) SQLmap			
+
+0) Install All
+
+-----------------------------Password Attacks-----------------------------
+
+1) Bkhive										5) John the ripper
+2) Findmyhash									6) Ophcrack
+3) Hashcat										7) Samdump2
+4) Hydra
+
+0) Install All
+
+--------------------------------------All The Tools--------------------------------------
+1) Aircrack-NG						23) WPScaner					45) Galleta		
+2) SQLMap							24) Binwalk						46) Guymager
+3) Maltego							25) Faraday						47) p0f
+4) Casefile							26) Metaspoit + Armitage		48) Volatility	
+5) Arduino							27) BeEF						49) Funkload
+6) Wireshark						28) Findmyhash					50) SlowHTTPTest
+7) SSLstrip							29) John the ripper				51) SSLSplit
+8) NMap								30) Proxychains					52) BTScanner
+9) theHarvester						31) Apktool						53) Bluelog
+10) hping3							32) Nikto						54) Bluemaho
+11) Recon-ng 						33) Ettercap					55) Bluepot	
+12) SET 							34) Etherape					56) Blueranger
+13) Amap							35) Netdiscover					57) Bluesnarfer
+14) ExploitDB						36) Driftnet					58) Evilgrade
+15) Kismet							37) Netcat						59) Webshells
+16) PixieWPS						38) Bkhive						60) Samdump2
+17) Reaver							39) Ophcrack					61) Crozono
+18) Wifi Honey						40) Hydra						62) Macchanger
+19) CutyCapt						41) Dsniff						63) OWASP ZAP
+20) BurpSuite						42) Hashcat						64) Vega
+21) Dirbuster						43) Wifite
+22) Websploit						44) Foremost
+
+0) Install All
+
+
+
 		'''
 
 		mainChoice = raw_input("Choose an option: ")
