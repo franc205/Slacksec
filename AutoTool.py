@@ -4,6 +4,8 @@ import os
 import sys, traceback
 import struct, time
 
+#---------------------------------------------------------Installation Functions---------------------------------------------------------#
+
 def intallAll():
 	cmd = os.system("apt-get install -y wget git curl")
 	cmd = os.system("apt-get install -y aircrack-ng sqlmap arduino wireshark sslstrip nmap hping3 amap-align kismet reaver cutycapt binwalk john proxychains apktool nikto ettercap-graphical etherape netdiscover driftnet netcat bkhive ophcrack hydra dsniff wifite foremost galleta guymager p0f volatility funkload slowhttptest sslsplit btscanner wifite samdump2 macchanger")
