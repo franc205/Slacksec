@@ -329,11 +329,12 @@ def main():
 1) Essential Tools							5) Exploitation Tools
 2) Wireless Tools							6) Password Attacks	
 3) Web Hacking Tools						7) Reporting Tools
-4) Sniffing & Spoofing
+4) Sniffing & Spoofing						8) HELP!
 
 0) All the tools
+'''
 
-
+print'''
 ---------------------------Essential Tools---------------------------
 1) Aircrack-NG									6) Netcat
 2) DSniff										7) Nmap
@@ -341,7 +342,10 @@ def main():
 4) hping3										9) SET
 5) Metaspoit + Armitage							10) Wireshark
 
+0) Install All
+'''
 
+print'''
 ---------------------------Wireless Tools----------------------------
 1) Aircrack-NG									8) Crozono
 2) Bluelog										9) Kismet
@@ -352,7 +356,9 @@ def main():
 7) BTScanner		
 
 0) Install All
+'''
 
+print'''
 ---------------------------Web Hacking Tools----------------------------
 1) BurpSuite									10) SQLMap
 2) BeEF											11) SSLSplit
@@ -365,7 +371,9 @@ def main():
 9) Recon-ng
 
 0) Install All
-						 
+'''	
+
+print'''	 
 ---------------------------Sniffing & Spoofing----------------------------
 1) Driftnet										6) Netdiscover
 2) Dsniff										7) SSLSplit
@@ -374,7 +382,9 @@ def main():
 5) Evilgrade                
 
 0) Install All
+'''
 
+print'''
 ----------------------------Exploitation Tools----------------------------
 1) BeEF											5) Maltego
 2) Evilgrade									6) Metaspoit + Armitage
@@ -382,7 +392,9 @@ def main():
 4) Faraday										8) SQLmap			
 
 0) Install All
+'''
 
+print'''
 -----------------------------Password Attacks-----------------------------
 
 1) Bkhive										5) John the ripper
@@ -391,13 +403,18 @@ def main():
 4) Hydra
 
 0) Install All
+'''
 
+print'''
 -----------------------------Reporting Tools-----------------------------
-1) Casefile										3) Maltego
+1) Casefile										
 2) CutyCapt
+3) Maltego
 
 0) Install All
+'''
 
+print'''
 --------------------------------------All The Tools--------------------------------------
 1) Aircrack-ng						23) Evilgrade					45) PixieWPS
 2) Amap								24) ExploitDB					46) Proxychains
