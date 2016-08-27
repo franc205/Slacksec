@@ -312,6 +312,8 @@ def wpscan():
 	#cmd = os.system("ln -s /usr/share/wpscan/wpscan.rb /usr/bin/wpscan")
 	time.sleep(2)
 
+#--------------------------------------------------------------Menu Functions--------------------------------------------------------------#
+
 def main():
 	while True:
 		print '''
@@ -323,132 +325,78 @@ def main():
        # #      ###### #      #  #         # #      #      
  #     # #      #    # #    # #   #  #     # #      #    # 
   #####  ###### #    #  ####  #    #  #####  ######  ####  
-												By Franc205
- 
---------------------------Choose a Category--------------------------
-1) Essential Tools							5) Exploitation Tools
-2) Wireless Tools							6) Password Attacks	
-3) Web Hacking Tools						7) Reporting Tools
-4) Sniffing & Spoofing						8) HELP!
+						By Franc205
+
+----------------------------Choose a Category----------------------------
+1) Essential Tools				5) Exploitation Tools
+2) Wireless Tools				6) Password Attacks	
+3) Web Hacking Tools				7) Reporting Tools
+4) Sniffing & Spoofing				8) HELP!
 
 0) All the tools
-'''
-
-print'''
----------------------------Essential Tools---------------------------
-1) Aircrack-NG									6) Netcat
-2) DSniff										7) Nmap
-3) Faraday										8) OWSAP Zap
-4) hping3										9) SET
-5) Metaspoit + Armitage							10) Wireshark
-
-0) Install All
-'''
-
-print'''
----------------------------Wireless Tools----------------------------
-1) Aircrack-NG									8) Crozono
-2) Bluelog										9) Kismet
-3) Bluemaho										10) PixieWPS
-4) Bluepot										11) Reaver
-5) Blueranger									12) Wifite
-6) Bluesnarfer									13) Wifi Honey
-7) BTScanner		
-
-0) Install All
-'''
-
-print'''
----------------------------Web Hacking Tools----------------------------
-1) BurpSuite									10) SQLMap
-2) BeEF											11) SSLSplit
-3) Dirbuster									12) SSLstrip
-4) hping3										13) Vega
-5) Metaspoit + Armitage							14) Webshells
-6) NMap											15) Websploit
-7) Nikto										16) Wireshark
-8) OWASP ZAP									17) WPScaner
-9) Recon-ng
-
-0) Install All
-'''	
-
-print'''	 
----------------------------Sniffing & Spoofing----------------------------
-1) Driftnet										6) Netdiscover
-2) Dsniff										7) SSLSplit
-3) Etherape										8) SSLstrip
-4) Ettercap										9) Wireshark
-5) Evilgrade                
-
-0) Install All
-'''
-
-print'''
-----------------------------Exploitation Tools----------------------------
-1) BeEF											5) Maltego
-2) Evilgrade									6) Metaspoit + Armitage
-3) ExploitDB									7) SET
-4) Faraday										8) SQLmap			
-
-0) Install All
-'''
-
-print'''
------------------------------Password Attacks-----------------------------
-
-1) Bkhive										5) John the ripper
-2) Findmyhash									6) Ophcrack
-3) Hashcat										7) Samdump2
-4) Hydra
-
-0) Install All
-'''
-
-print'''
------------------------------Reporting Tools-----------------------------
-1) Casefile										
-2) CutyCapt
-3) Maltego
-
-0) Install All
-'''
-
-print'''
---------------------------------------All The Tools--------------------------------------
-1) Aircrack-ng						23) Evilgrade					45) PixieWPS
-2) Amap								24) ExploitDB					46) Proxychains
-3) Apktool							25) Faraday						47) P0F
-4) Arduino							26) Findmyhash					48) Reaver
-5) BTScanner						27) Foremost					49) Recon-ng
-6) BeEF								28) Funkload					50) SET
-7) Binwalk							29) Galleta						51) SQLMap
-8) Bkhive							30) Guymager					52) SSLSplit
-9) Bluelog							31) Hashcat						53) SSLstrip
-10) Bluemaho						32) Hping3						54) Samdump2
-11) Bluepot							33) Hydra						55) SlowHTTPTest
-12) Blueranger						34) John the ripper				56) TheHarvester
-13) Bluesnarfer						35) Kismet						57) Vega
-14) BurpSuite						36) Macchanger					58) Volatility
-15) Casefile						37) Maltego						59) WPScaner
-16) Crozono							38) Metaspoit + Armitage		60) Webshells
-17) CutyCapt						39) NMap						61) Websploit
-18) Dirbuster						40) Netcat						62) Wifi Honey
-19) Driftnet						41) Netdiscover					63) Wifite
-20) Dsniff							42) Nikto						64) Wireshark
-21) Etherape						43) OWASP Zap
-22) Ettercap						44) Ophcrack
-
-0) Install All
-
-
-
 		'''
-
 		mainChoice = raw_input("Choose an option: ")
-		if mainChoice == "requirements":
-			cmd = os.system("apt-get install -y git wget curl")
-			time.sleep(2)
+		if mainChoice == "0":
+			allMenu()
+		elif mainChoice == "1":
+			essentialMenu()
+		elif mainChoice == "2":
+			wirelessMenu()
+		elif mainChoice == "3":
+			webMenu()
+		elif mainChoice == "4":
+			sniffingMenu()
+		elif mainChoice == "5":
+			explotationMenu()
+		elif mainChoice == "6":
+			passwordMenu()
+		elif mainChoice == "7":
+			reportMenu()
+		elif mainChoice == "8":
+			HELP()
+		elif mainChoice == "home":
+			print "You are already at Home!!!"
+		elif mainChoice == "exit":
+			exit()
+		else:
+			print "Please choose a valid option!!!"
+
+def allMenu():
+		print'''
+-------------------------------------------All The Tools-------------------------------------------
+
+1) Aircrack-ng				23) Evilgrade						45) PixieWPS
+2) Amap					24) ExploitDB						46) Proxychains
+3) Apktool				25) Faraday							47) P0F
+4) Arduino				26) Findmyhash						48) Reaver
+5) BTScanner				27) Foremost						49) Recon-ng
+6) BeEF					28) Funkload						50) SET
+7) Binwalk				29) Galleta							51) SQLMap
+8) Bkhive				30) Guymager						52) SSLSplit
+9) Bluelog				31) Hashcat							53) SSLstrip
+10) Bluemaho				32) Hping3							54) Samdump2
+11) Bluepot				33) Hydra							55) SlowHTTPTest
+12) Blueranger				34) John the ripper					56) TheHarvester
+13) Bluesnarfer				35) Kismet							57) Vega
+14) BurpSuite				36) Macchanger						58) Volatility
+15) Casefile				37) Maltego							59) WPScaner
+16) Crozono				38) Metaspoit + Armitage			60) Webshells
+17) CutyCapt				39) NMap							61) Websploit
+18) Dirbuster				40) Netcat							62) Wifi Honey
+19) Driftnet				41) Netdiscover						63) Wifite
+20) Dsniff				42) Nikto							64) Wireshark
+21) Etherape				43) OWASP Zap
+22) Ettercap				44) Ophcrack
+
+0) Install All
+'''
+		mainChoice = raw_input("Choose an option: ")
+		if mainChoice == "back":
+			main()
+		elif mainChoice == "home":
+			main()
+		elif mainChoice == "help":
+			HELP()
 		elif mainChoice == "0":
 			intallAll()
 		elif mainChoice == "1":
@@ -621,6 +569,415 @@ print'''
 		else:
 			print "Please choose a valid option!!!"
 			time.sleep(2)
-					
+
+def essentialMenu():
+	print'''
+---------------------------Essential Tools---------------------------
+1) Aircrack-NG						6) Netcat
+2) DSniff						7) Nmap
+3) Faraday						8) OWSAP Zap
+4) Hping3						9) SET
+5) Metaspoit + Armitage					10) Wireshark
+
+0) Install All
+	'''
+
+	mainChoice = raw_input("Choose an option: ")
+	if mainChoice == "back":
+		main()
+	elif mainChoice == "home":
+		main()
+	elif mainChoice == "help":
+		HELP()
+	elif mainChoice == "0":
+		cmd = os.system("apt-get install -y aircrack-ng dsniff hping3 netcat nmap wireshark")
+		faraday()
+		metasploit()
+		owaspZAP()
+		setoolkit()
+	elif mainChoice == "1":
+		cmd = os.system("apt-get install -y aircrack-ng")
+		time.sleep(2)
+	elif mainChoice == "2":
+		cmd = os.system("apt-get install -y dsniff")
+		time.sleep(2)
+	elif mainChoice == "3":
+		faraday()
+	elif mainChoice == "4":
+		cmd = os.system("apt-get install -y hping3")
+		time.sleep(2)
+	elif mainChoice == "5":
+		metasploit()
+	elif mainChoice == "6":
+		cmd = os.system("apt-get install -y netcat")
+		time.sleep(2)
+	elif mainChoice == "7":
+		cmd = os.system("apt-get install -y nmap")
+		time.sleep(2)
+	elif mainChoice == "8":
+		owaspZAP()
+	elif mainChoice == "9":
+		setoolkit()
+	elif mainChoice == "10":
+		cmd = os.system("apt-get install -y wireshark")
+		time.sleep(2)
+	else:
+		print "Please choose a valid option!!!"
+		time.sleep(2)
+
+def wirelessMenu():
+	print'''
+-----------------------------Wireless Tools------------------------------
+1) Aircrack-NG						8) Crozono
+2) Bluelog						9) Kismet
+3) Bluemaho						10) PixieWPS
+4) Bluepot						11) Reaver
+5) Blueranger						12) Wifite
+6) Bluesnarfer						13) Wifi Honey
+7) BTScanner		
+
+0) Install All
+'''
+	mainChoice = raw_input("Choose an option: ")
+	if mainChoice == "back":
+		main()
+	elif mainChoice == "home":
+		main()
+	elif mainChoice == "help":
+		HELP()
+	elif mainChoice == "0":
+		cmd = os.system("apt-get install -y aircrack-ng kismet reaver wifite")
+		bluelog()
+		bluemaho()
+		bluepot()
+		blueranger()
+		crozono()
+		pixieWPS()
+		wifihoney()
+		time.sleep(2)
+	elif mainChoice == "1":
+		cmd = os.system("apt-get install -y aircrack-ng")
+		time.sleep(2)
+	elif mainChoice == "2":
+		bluelog()
+	elif mainChoice == "3":
+		bluemaho()
+	elif mainChoice == "4":
+		bluepot()
+	elif mainChoice == "5":
+		blueranger()
+	elif mainChoice == "6":
+		print "Comming Soon!"
+		time.sleep(2)
+	elif mainChoice == "7":
+		print "Comming Soon!"
+		time.sleep(2)
+	elif mainChoice == "8":
+		crozono()
+	elif mainChoice == "9":
+		cmd = os.system("apt-get install -y kismet")
+		time.sleep(2)
+	elif mainChoice == "10":
+		pixieWPS()
+	elif mainChoice == "11":
+		cmd = os.system("apt-get install -y reaver")
+		time.sleep(2)
+	elif mainChoice == "12":
+		cmd = os.system("apt-get install -y wifite")
+		time.sleep(2)
+	elif mainChoice == "13":
+		wifihoney()
+	else:
+		print "Please choose a valid option!!!"
+		time.sleep(2)
+
+def webMenu():
+	print'''
+-----------------------------Web Hacking Tools------------------------------
+1) BurpSuite						10) SQLMap
+2) BeEF							11) SSLSplit
+3) Dirbuster						12) SSLstrip
+4) Hping3						13) Vega
+5) Metaspoit + Armitage					14) Webshells
+6) NMap							15) Websploit
+7) Nikto						16) Wireshark
+8) OWASP ZAP						17) WPScaner
+9) Recon-ng
+
+0) Install All
+	'''	
+
+	mainChoice = raw_input("Choose an option: ")
+	if mainChoice == "back":
+		main()
+	elif mainChoice == "home":
+		main()
+	elif mainChoice == "help":
+		HELP()
+	elif mainChoice == "0":
+		cmd = os.system("apt-get install -y hping3 nmap nikto sqlmap sslsplit sslstrip wireshark")
+		burpsuite()
+		beef()
+		dirbuster()
+		metasploit()
+		owaspZAP()
+		reconNG()
+		vega()
+		webshells()
+		websploit()
+		wpscan()
+		time.sleep(2)
+	elif mainChoice == "1":
+		burpsuite()
+	elif mainChoice == "2":
+		beef()
+	elif mainChoice == "3":
+		dirbuster()
+	elif mainChoice == "4":
+		cmd = os.system("apt-get install -y hping3")
+		time.sleep(2)
+	elif mainChoice == "5":
+		metasploit()
+	elif mainChoice == "6":
+		cmd = os.system("apt-get install -y nmap")
+		time.sleep(2)
+	elif mainChoice == "7":
+		cmd = os.system("apt-get install -y nikto")
+		time.sleep(2)
+	elif mainChoice == "8":
+		owaspZAP()
+	elif mainChoice == "9":
+		reconNG()
+	elif mainChoice == "10":
+		cmd = os.system("apt-get install -y sqlmap")
+		time.sleep(2)
+	elif mainChoice == "11":
+		cmd = os.system("apt-get install -y sslsplit")
+		time.sleep(2)
+	elif mainChoice == "12":
+		cmd = os.system("apt-get install -y sslstrip")
+		time.sleep(2)
+	elif mainChoice == "13":
+		vega()
+	elif mainChoice == "14":
+		webshells()
+	elif mainChoice == "15":
+		websploit()
+	elif mainChoice == "16":
+		cmd = os.system("apt-get install -y wireshark")
+		time.sleep(2)
+	elif mainChoice == "17":
+		wpscan()
+	else:
+		print "Please choose a valid option!!!"
+		time.sleep(2)
+
+def	sniffingMenu():
+	print'''	 
+-----------------------------Sniffing & Spoofing------------------------------
+1) Driftnet						6) Netdiscover
+2) Dsniff						7) SSLSplit
+3) Etherape						8) SSLstrip
+4) Ettercap						9) Wireshark
+5) Evilgrade                
+
+0) Install All
+	'''
+	
+	mainChoice = raw_input("Choose an option: ")
+	if mainChoice == "back":
+		main()
+	elif mainChoice == "home":
+		main()
+	elif mainChoice == "help":
+		HELP()
+	elif mainChoice == "0":
+		cmd = os.system("apt-get install -y driftnet dsniff etherape ettercap netdiscover sslsplit sslstrip wireshark")
+		evilgrade()
+		time.sleep(2)
+	elif mainChoice == "1":
+		cmd = os.system("apt-get install -y driftnet")
+		time.sleep(2)
+	elif mainChoice == "2":
+		cmd = os.system("apt-get install -y dsniff")
+		time.sleep(2)
+	elif mainChoice == "3":
+		cmd = os.system("apt-get install -y etherape")
+		time.sleep(2)
+	elif mainChoice == "4":
+		cmd = os.system("apt-get install -y ettercap")
+		time.sleep(2)
+	elif mainChoice == "5":
+		evilgrade()
+	elif mainChoice == "6":
+		cmd = os.system("apt-get install -y netdiscover")
+		time.sleep(2)
+	elif mainChoice == "7":
+		cmd = os.system("apt-get install -y sslsplit")
+		time.sleep(2)
+	elif mainChoice == "8":
+		cmd = os.system("apt-get install -y sslstrip")
+		time.sleep(2)
+	elif mainChoice == "9":
+		cmd = os.system("apt-get install -y wireshark")
+		time.sleep(2)
+	else:
+		print "Please choose a valid option!!!"
+		time.sleep(2)
+
+def explotationMenu():
+	print'''
+------------------------------Exploitation Tools------------------------------
+1) BeEF						5) Maltego
+2) Evilgrade					6) Metaspoit + Armitage
+3) ExploitDB					7) SET
+4) Faraday					8) SQLmap			
+
+0) Install All
+	'''
+
+	mainChoice = raw_input("Choose an option: ")
+	if mainChoice == "back":
+		main()
+	elif mainChoice == "home":
+		main()
+	elif mainChoice == "help":
+		HELP()
+	elif mainChoice == "0":
+		cmd = os.system("apt-get install -y sqlmap")
+		beef()
+		evilgrade()
+		exploitdb()
+		faraday()
+		maltego()
+		metasploit()
+		setoolkit()
+		time.sleep(2)
+	elif mainChoice == "1":
+		beef()
+	elif mainChoice == "2":
+		evilgrade()
+	elif mainChoice == "3":
+		exploitdb()
+	elif mainChoice == "4":
+		faraday()
+	elif mainChoice == "5":
+		maltego()
+	elif mainChoice == "6":
+		metasploit()
+	elif mainChoice == "7":
+		setoolkit()
+	elif mainChoice == "8":
+		cmd = os.system("apt-get install -y sqlmap")
+		time.sleep(2)
+	else:
+		print "Please choose a valid option!!!"
+		time.sleep(2)
+
+def passwordMenu():
+	print'''
+-------------------------------Password Attacks-------------------------------
+
+1) Bkhive					5) John the ripper
+2) Findmyhash					6) Ophcrack
+3) Hashcat					7) Samdump2
+4) Hydra
+
+0) Install All
+	'''
+
+	mainChoice = raw_input("Choose an option: ")
+	if mainChoice == "back":
+		main()
+	elif mainChoice == "home":
+		main()
+	elif mainChoice == "help":
+		HELP()
+	elif mainChoice == "0":
+		cmd = os.system("apt-get install -y bkhive hydra john ophcrack samdump2")
+		findmyhash()
+		hashcat()
+		time.sleep(2)
+	elif mainChoice == "1":
+		cmd = os.system("apt-get install -y bkhive")
+		time.sleep(2)
+	elif mainChoice == "2":
+		findmyhash()
+	elif mainChoice == "3":
+		hashcat()
+	elif mainChoice == "4":
+		cmd = os.system("apt-get install -y hydra")
+		time.sleep(2)
+	elif mainChoice == "5":
+		cmd = os.system("apt-get install -y john")
+		time.sleep(2)
+	elif mainChoice == "6":
+		cmd = os.system("apt-get install -y ophcrack")
+		time.sleep(2)
+	elif mainChoice == "7":
+		cmd = os.system("apt-get install -y samdump2")
+		time.sleep(2)
+	else:
+		print "Please choose a valid option!!!"
+		time.sleep(2)
+
+def reportMenu():
+	print'''
+-----------------------------Reporting Tools-----------------------------
+1) Casefile										
+2) CutyCapt
+3) Faraday
+4) Maltego
+
+
+0) Install All
+	'''
+
+	mainChoice = raw_input("Choose an option: ")
+	if mainChoice == "back":
+		main()
+	elif mainChoice == "home":
+		main()
+	elif mainChoice == "help":
+		HELP()
+	elif mainChoice == "0":
+		cmd = os.system("apt-get install -y cutycapt")
+		casefile()
+		faraday()
+		maltego()
+		time.sleep(2)
+	elif mainChoice == "1":
+		casefile()
+	elif mainChoice == "2":
+		cmd = os.system("apt-get install -y cutycapt")
+		time.sleep(2)
+	elif mainChoice == "3":
+		faraday()
+	elif mainChoice == "4":
+		maltego()
+	else:
+		print "Please choose a valid option!!!"
+		time.sleep(2)
+
+def HELP():
+	print'''
+
+  #####                               #####                
+ #     # #        ##    ####  #    # #     # ######  ####  
+ #       #       #  #  #    # #   #  #       #      #    # 
+  #####  #      #    # #      ####    #####  #####  #      
+       # #      ###### #      #  #         # #      #      
+ #     # #      #    # #    # #   #  #     # #      #    # 
+  #####  ###### #    #  ####  #    #  #####  ######  ####  
+					 By Franc205
+
+
+Select the application you want to install and it will be automatically installed.
+	*Type "back" on any time to return to the previous screen.
+	*Type "help" on any screen to display this message.
+	*To exit the application use Ctrl + C
+--------------------------------------------------------------------------------
+	'''					
+	time.sleep(6)
 
 main()
