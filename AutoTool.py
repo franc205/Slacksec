@@ -360,6 +360,7 @@ def main():
 			print "You are already at Home!!!"
 		else:
 			print "Please choose a valid option!!!"
+			time.sleep(2)
 
 def allMenu():
 		print'''
