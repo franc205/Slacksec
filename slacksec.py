@@ -317,8 +317,9 @@ def wpscan():
 #--------------------------------------------------------------Menu Functions--------------------------------------------------------------#
 
 def main():
-	while True:
-		print '''
+	try:
+		while True:
+			print '''
 
   #####                               #####                
  #     # #        ##    ####  #    # #     # ######  ####  
@@ -336,31 +337,36 @@ def main():
 4) Sniffing & Spoofing				8) HELP!
 
 0) All the tools
-		'''
-		mainChoice = raw_input("Choose an option: ")
-		if mainChoice == "0":
-			allMenu()
-		elif mainChoice == "1":
-			essentialMenu()
-		elif mainChoice == "2":
-			wirelessMenu()
-		elif mainChoice == "3":
-			webMenu()
-		elif mainChoice == "4":
-			sniffingMenu()
-		elif mainChoice == "5":
-			explotationMenu()
-		elif mainChoice == "6":
-			passwordMenu()
-		elif mainChoice == "7":
-			reportMenu()
-		elif mainChoice == "8":
-			HELP()
-		elif mainChoice == "home":
-			print "You are already at Home!!!"
-		else:
-			print "Please choose a valid option!!!"
-			time.sleep(2)
+			'''
+			mainChoice = raw_input("Choose an option: ")
+			if mainChoice == "0":
+				allMenu()
+			elif mainChoice == "1":
+				essentialMenu()
+			elif mainChoice == "2":
+				wirelessMenu()
+			elif mainChoice == "3":
+				webMenu()
+			elif mainChoice == "4":
+				sniffingMenu()
+			elif mainChoice == "5":
+				explotationMenu()
+			elif mainChoice == "6":
+				passwordMenu()
+			elif mainChoice == "7":
+				reportMenu()
+			elif mainChoice == "8":
+				HELP()
+			elif mainChoice == "home":
+				print "You are already at Home!!!"
+			else:
+				print "Please choose a valid option!!!"
+				time.sleep(2)
+	except KeyboardInterrupt:
+		print "See You!!!"
+	except Exception:
+		traceback.print_exc(file=sys.stdout)
+	sys.exit(0)
 
 def allMenu():
 		print'''
