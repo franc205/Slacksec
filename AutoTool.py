@@ -402,28 +402,28 @@ def main():
 0) Install All
 
 --------------------------------------All The Tools--------------------------------------
-1) Aircrack-NG						23) WPScaner					45) Galleta		
-2) SQLMap							24) Binwalk						46) Guymager
-3) Maltego							25) Faraday						47) p0f
-4) Casefile							26) Metaspoit + Armitage		48) Volatility	
-5) Arduino							27) BeEF						49) Funkload
-6) Wireshark						28) Findmyhash					50) SlowHTTPTest
-7) SSLstrip							29) John the ripper				51) SSLSplit
-8) NMap								30) Proxychains					52) BTScanner
-9) theHarvester						31) Apktool						53) Bluelog
-10) hping3							32) Nikto						54) Bluemaho
-11) Recon-ng 						33) Ettercap					55) Bluepot	
-12) SET 							34) Etherape					56) Blueranger
-13) Amap							35) Netdiscover					57) Bluesnarfer
-14) ExploitDB						36) Driftnet					58) Evilgrade
-15) Kismet							37) Netcat						59) Webshells
-16) PixieWPS						38) Bkhive						60) Samdump2
-17) Reaver							39) Ophcrack					61) Crozono
-18) Wifi Honey						40) Hydra						62) Macchanger
-19) CutyCapt						41) Dsniff						63) OWASP ZAP
-20) BurpSuite						42) Hashcat						64) Vega
-21) Dirbuster						43) Wifite
-22) Websploit						44) Foremost
+1) Aircrack-ng						23) Evilgrade					45) PixieWPS
+2) Amap								24) ExploitDB					46) Proxychains
+3) Apktool							25) Faraday						47) P0F
+4) Arduino							26) Findmyhash					48) Reaver
+5) BTScanner						27) Foremost					49) Recon-ng
+6) BeEF								28) Funkload					50) SET
+7) Binwalk							29) Galleta						51) SQLMap
+8) Bkhive							30) Guymager					52) SSLSplit
+9) Bluelog							31) Hashcat						53) SSLstrip
+10) Bluemaho						32) Hping3						54) Samdump2
+11) Bluepot							33) Hydra						55) SlowHTTPTest
+12) Blueranger						34) John the ripper				56) TheHarvester
+13) Bluesnarfer						35) Kismet						57) Vega
+14) BurpSuite						36) Macchanger					58) Volatility
+15) Casefile						37) Maltego						59) WPScaner
+16) Crozono							38) Metaspoit + Armitage		60) Webshells
+17) CutyCapt						39) NMap						61) Websploit
+18) Dirbuster						40) Netcat						62) Wifi Honey
+19) Driftnet						41) Netdiscover					63) Wifite
+20) Dsniff							42) Nikto						64) Wireshark
+21) Etherape						43) OWASP Zap
+22) Ettercap						44) Ophcrack
 
 0) Install All
 
@@ -441,165 +441,169 @@ def main():
 			cmd = os.system("apt-get install -y aircrack-ng")
 			time.sleep(2)
 		elif mainChoice == "2":
-			cmd = os.system("apt-get install -y sqlmap")
-			time.sleep(2)
-		elif mainChoice == "3":
-			maltego()
-		elif mainChoice == "4":
-			casefile()
-		elif mainChoice == "5":
-			cmd = os.system("apt-get install -y arduino")
-			time.sleep(2)
-		elif mainChoice == "6":
-			cmd = os.system("apt-get install -y wireshark")
-			time.sleep(2)
-		elif mainChoice == "7":
-			cmd = os.system("apt-get install -y sslstrip")
-			time.sleep(2)
-		elif mainChoice == "8":
-			cmd = os.system("apt-get install -y nmap")
-			time.sleep(2)
-		elif mainChoice == "9":
-			theharvester()
-		elif mainChoice == "10":
-			cmd = os.system("apt-get install -y hping3")
-			time.sleep(2)
-		elif mainChoice == "11":
-			reconNG()
-		elif mainChoice == "12":
-			setoolkit()
-		elif mainChoice == "13":
 			cmd = os.system("apt-get install -y amap-align")
 			time.sleep(2)
-		elif mainChoice == "14":
-			exploitdb()
-		elif mainChoice == "15":
-			cmd = os.system("apt-get install -y kismet")
-			time.sleep(2)
-		elif mainChoice == "16":
-			pixieWPS()
-		elif mainChoice == "17":
-			cmd = os.system("apt-get install -y reaver")
-			time.sleep(2)
-		elif mainChoice == "18":
-			wifihoney()	
-		elif mainChoice == "19":
-			cmd = os.system("apt-get install -y cutycapt")
-			time.sleep(2)
-		elif mainChoice == "20":
-			burpsuite()
-		elif mainChoice == "21":
-			dirbuster()
-		elif mainChoice == "22":
-			websploit()
-		elif mainChoice == "23":
-			wpscan() #Experimental
-		elif mainChoice == "24":
-			cmd = os.system("apt-get install -y binwalk")
-			time.sleep(2)
-		elif mainChoice == "25":
-			faraday() #Experimental 
-		elif mainChoice == "26":
-			metasploit()	
-		elif mainChoice == "27":
-			beef()
-		elif mainChoice == "28":
-			findmyhash()
-		elif mainChoice == "29":
-			cmd = os.system("apt-get install -y john")
-			time.sleep(2)
-		elif mainChoice == "30":
-			cmd = os.system("apt-get install -y proxychains")
-			time.sleep(2)
-		elif mainChoice == "31":
+		elif mainChoice == "3":
 			cmd = os.system("apt-get install -y apktool")
 			time.sleep(2)
-		elif mainChoice == "32":
-			cmd = os.system("apt-get install -y nikto")
+		elif mainChoice == "4":
+			cmd = os.system("apt-get install -y arduino")
 			time.sleep(2)
-		elif mainChoice == "33":
-			cmd = os.system("apt-get install -y ettercap-graphical")
+		elif mainChoice == "5":
+			print "Comming Soon!"
+			#btscanner()
+		elif mainChoice == "6":
+			beef()
+		elif mainChoice == "7":
+			cmd = os.system("apt-get install -y binwalk")
 			time.sleep(2)
-		elif mainChoice == "34":
-			cmd = os.system("apt-get install -y etherape")
-			time.sleep(2)
-		elif mainChoice == "35":
-			cmd = os.system("apt-get install -y netdiscover")
-			time.sleep(2)
-		elif mainChoice == "36":
-			cmd = os.system("apt-get install -y driftnet")
-			time.sleep(2)
-		elif mainChoice == "37":
-			cmd = os.system("apt-get install -y netcat")
-			time.sleep(2)
-		elif mainChoice == "38":
+		elif mainChoice == "8":
 			cmd = os.system("apt-get install -y bkhive")
 			time.sleep(2)
-		elif mainChoice == "39":
-			cmd = os.system("apt-get install -y ophcrack")
+		elif mainChoice == "9":
+			bluelog()
+		elif mainChoice == "10":
+			bluemaho()
+		elif mainChoice == "11":
+			bluepot()
+		elif mainChoice == "12":
+			blueranger()
+		elif mainChoice == "13":
+			print "Comming Soon!"
+			#bluesnarfer()
+		elif mainChoice == "14":
+			burpsuite()
+		elif mainChoice == "15":
+			casefile()
+		elif mainChoice == "16":
+			crozono()
+		elif mainChoice == "17":
+			cmd = os.system("apt-get install -y cutycapt")
 			time.sleep(2)
-		elif mainChoice == "40":
-			cmd = os.system("apt-get install -y hydra")
+		elif mainChoice == "18":
+			dirbuster()
+		elif mainChoice == "19":
+			cmd = os.system("apt-get install -y driftnet")
 			time.sleep(2)
-		elif mainChoice == "41":
+		elif mainChoice == "20":
 			cmd = os.system("apt-get install -y dsniff")
 			time.sleep(2)
-		elif mainChoice == "42":
-			hashcat()
-		elif mainChoice == "43":
-			cmd = os.system("apt-get install -y wifite")
+		elif mainChoice == "21":
+			cmd = os.system("apt-get install -y etherape")
 			time.sleep(2)
-		elif mainChoice == "44":
+		elif mainChoice == "22":
+			cmd = os.system("apt-get install -y ettercap-graphical")
+			time.sleep(2)
+		elif mainChoice == "23":
+			evilgrade()
+		elif mainChoice == "24":
+			exploitdb()
+		elif mainChoice == "25":
+			faraday()
+		elif mainChoice == "26":
+			findmyhash()	
+		elif mainChoice == "27":
 			cmd = os.system("apt-get install -y foremost")
 			time.sleep(2)
-		elif mainChoice == "45":
+		elif mainChoice == "28":
+			cmd = os.system("apt-get install -y funkload")
+			time.sleep(2)
+		elif mainChoice == "29":
 			cmd = os.system("apt-get install -y galleta")
 			time.sleep(2)
-		elif mainChoice == "46":
+		elif mainChoice == "30":
 			cmd = os.system("apt-get install -y guymager")
+			time.sleep(2)
+		elif mainChoice == "31":
+			hashcat()
+		elif mainChoice == "32":
+			cmd = os.system("apt-get install -y hping3")
+			time.sleep(2)
+		elif mainChoice == "33":
+			cmd = os.system("apt-get install -y hydra")
+			time.sleep(2)
+		elif mainChoice == "34":
+			cmd = os.system("apt-get install -y john")
+			time.sleep(2)
+		elif mainChoice == "35":
+			cmd = os.system("apt-get install -y kismet")
+			time.sleep(2)
+		elif mainChoice == "36":
+			cmd = os.system("apt-get install -y macchanger")
+			time.sleep(2)
+		elif mainChoice == "37":
+			maltego()
+		elif mainChoice == "38":
+			metasploit()
+		elif mainChoice == "39":
+			cmd = os.system("apt-get install -y nmap")
+			time.sleep(2)
+		elif mainChoice == "40":
+			cmd = os.system("apt-get install -y netcat")
+			time.sleep(2)
+		elif mainChoice == "41":
+			cmd = os.system("apt-get install -y netdiscover")
+			time.sleep(2)
+		elif mainChoice == "42":
+			cmd = os.system("apt-get install -y nikto")
+			time.sleep(2)
+		elif mainChoice == "43":
+			owaspZAP()
+		elif mainChoice == "44":
+			cmd = os.system("apt-get install -y ophcrack")
+			time.sleep(2)
+		elif mainChoice == "45":
+			pixieWPS()
+		elif mainChoice == "46":
+			cmd = os.system("apt-get install -y proxychains")
 			time.sleep(2)
 		elif mainChoice == "47":
 			cmd = os.system("apt-get install -y p0f")
 			time.sleep(2)
 		elif mainChoice == "48":
-			cmd = os.system("apt-get install -y volatility")
+			cmd = os.system("apt-get install -y reaver")
 			time.sleep(2)
 		elif mainChoice == "49":
-			cmd = os.system("apt-get install -y funkload")
+			cmd = os.system("apt-get install -y recon-ng")
 			time.sleep(2)
 		elif mainChoice == "50":
-			cmd = os.system("apt-get install -y slowhttptest")
-			time.sleep(2)
+			setoolkit()
 		elif mainChoice == "51":
-			cmd = os.system("apt-get install -y sslsplit")
+			cmd = os.system("apt-get install -y sqlmap")
 			time.sleep(2)
 		elif mainChoice == "52":
-			cmd = os.system("apt-get install -y btscanner")
+			cmd = os.system("apt-get install -y sslsplit")
 			time.sleep(2)
 		elif mainChoice == "53":
-			bluelog()
+			cmd = os.system("apt-get install -y sslstrip")
+			time.sleep(2)
 		elif mainChoice == "54":
-			bluemaho()
-		elif mainChoice == "55":
-			bluepot()
-		elif mainChoice == "56":
-			blueranger()
-		elif mainChoice == "57":
-			bluesnarfer()
-		elif mainChoice == "58":
-			evilgrade()
-		elif mainChoice == "59":
-			webshells()
-		elif mainChoice == "60":
 			cmd = os.system("apt-get install -y samdump2")
-		elif mainChoice == "61":
-			crozono()
-		elif mainChoice == "62":
-			cmd = os.system("apt-get install -y macchanger")
-		elif mainChoice == "63":
-			owaspZAP()
-		elif mainChoice == "64":
+			time.sleep(2)
+		elif mainChoice == "55":
+			cmd = os.system("apt-get install -y slowhttptest")
+			time.sleep(2)
+		elif mainChoice == "56":
+			theharvester()
+		elif mainChoice == "57":
 			vega()
+		elif mainChoice == "58":
+			cmd = os.system("apt-get install -y volatility")
+			time.sleep(2)
+		elif mainChoice == "59":
+			wpscan()
+		elif mainChoice == "60":
+			webshells()
+		elif mainChoice == "61":
+			websploit()
+		elif mainChoice == "62":
+			wifihoney()
+		elif mainChoice == "63":
+			cmd = os.system("apt-get install -y wifite")
+			time.sleep(2)
+		elif mainChoice == "64":
+			cmd = os.system("apt-get install -y wireshark")
+			time.sleep(2)
 		else:
 			print "Please choose a valid option!!!"
 			time.sleep(2)
