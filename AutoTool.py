@@ -32,47 +32,40 @@ def intallAll():
 	wifihoney()
 	wpscan()
 	time.sleep(2)
-
-def maltego():
-	cmd = os.system("apt-get install -y wget")
-	cmd = os.system("wget \"https://www.paterva.com/malv35/community/MaltegoCarbonCE.v3.5.3.deb\" -O Maltego.deb")
-	cmd = os.system("dpkg -i Maltego.deb")
-	cmd = os.system("rm -rf Maltego.deb")
-	time.sleep(2)
-
-def casefile():
-	cmd = os.system("apt-get install -y wget")
-	cmd = os.system("wget \"http://www.paterva.com/cf211/MaltegoCaseFile.v2.1.1.8751.deb\" -O Casefile.deb")
-	cmd = os.system("dpkg -i Casefile.deb")
-	cmd = os.system("rm -rf Casefile.deb")
-	time.sleep(2)
 	
-def theharvester():
-	cmd = os.system("apt-get install -y git python-pip python-dev build-essential")
-	cmd = os.system("pip install requests")
-	cmd = os.system("git clone https://github.com/laramies/theHarvester /usr/share/theharvester")
-	cmd = os.system("ln -s /usr/share/theharvester/theHarvester.py /usr/bin/theHarvester")
-	cmd = os.system("chmod +x /usr/bin/theHarvester")
+def armitage():
+	cmd = os.system("apt-get install -y wget")
+	cmd = os.system("wget \"http://www.fastandeasyhacking.com/download/armitage150813.tgz\" -O Armitage.tgz")
+	cmd = os.system("tar -xvzf Armitage.tgz")
+	cmd = os.system("sudo mv armitage /opt/metasploit")
+	cmd = os.system("sudo chmod +x /opt/metasploit/armitage")
+	cmd = os.system("rm -rf Armitage.tgz")
+	armitage = open("/usr/bin/armitage", "a+")
+	armitage.write("java -XX:+AggressiveHeap -XX:+UseParallelGC -jar /opt/metasploit/armitage.jar $@")
+	armitage.close()
+	cmd = os.system("chmod +x /usr/bin/armitage")
 	time.sleep(2)
 
-def reconNG():
-	cmd = os.system("apt-get install -y git")
-	cmd = os.system("git clone https://LaNMaSteR53@bitbucket.org/LaNMaSteR53/recon-ng.git /usr/share/recon-ng")
-	cmd = os.system("ln -s /usr/share/recon-ng/recon-ng /usr/bin/recon-ng")
+def beef():
+	#Install Requeriments
+	cmd = os.system("apt-get install curl git build-essential openssl libreadline6 libreadline6-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev autoconf libc6-dev libncurses5-dev automake libtool bison subversion")
+	cmd = os.system("bash < <(curl -sk https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)")
+	cmd = os.system("echo '[[ -s \"$HOME/.rvm/scripts/rvm\" ]] && . \"$HOME/.rvm/scripts/rvm\"' >> ~/.bashrc")
+	cmd = os.system("source ~/.bashrc")
+	cmd = os.system("source $HOME/.rvm/scripts/rvm")
+	cmd = os.system("rvm install 1.9.2")
+	cmd = os.system("rvm use 1.9.2 --default")
+	#Install BeEF
+	cmd = os.system("git clone git://github.com/beefproject/beef.git /usr/share/beef")
+	cmd = os.system("cd /usr/share/beef && gem install bundler")
+	cmd = os.system("cd /usr/share/beef && bundle install")
+	#beef = open("/usr/bin/beef", "a+")
+	#beef.write("cd /usr/share/beef/ && ./beef")
+	#beef.close()
+	#cmd = os.system("chmod +x /usr/bin/beef")
+	print "Beef-XSS has been successfully installed on /usr/share/beef"
 	time.sleep(2)
 
-def setoolkit():
-	cmd = os.system("apt-get install -y git")
-	cmd = os.system("git clone https://github.com/trustedsec/social-engineer-toolkit/ /usr/share/set")
-	cmd = os.system("ln -s /usr/share/set/setoolkit /usr/bin/setoolkit")
-	time.sleep(2)
-
-def exploitdb():
-	cmd = os.system("apt-get install -y git")
-	cmd = os.system("git clone git://git.kali.org/packages/exploitdb.git /usr/share/exploitdb")
-	cmd = os.system("ln -s /usr/share/exploitdb/searchsploit /usr/bin/searchsploit")
-	time.sleep(2)
-	
 def bluelog():
 	cmd = os.system("apt-get install -y git libbluetooth-dev")
 	cmd = os.system("git clone https://github.com/MS3FGX/Bluelog.git /usr/share/bluelog")
@@ -102,21 +95,6 @@ def blueranger():
 	cmd = os.system("ln -s /usr/share/blueranger/blueranger.sh /usr/bin/blueranger")
 	time.sleep(2)
 	
-def pixieWPS():
-	cmd = os.system("apt-get install -y git build-essential libpcap-dev sqlite3 libsqlite3-dev libssl-dev unzip")
-	cmd = os.system("git clone https://github.com/wiire/pixiewps /tmp/pixiewps")
-	cmd = os.system("make -C /tmp/pixiewps/src")
-	cmd = os.system("make install -C /tmp/pixiewps/src")
-	cmd = os.system("rm -rf /tmp/pixiewps")
-	time.sleep(2)
-
-def wifihoney():
-	cmd = os.system("apt-get install -y git")
-	cmd = os.system("git clone git://git.kali.org/packages/wifi-honey.git /usr/share/wifi-honey")
-	cmd = os.system("ln -s /usr/share/wifi-honey/wifi_honey.sh /usr/bin/wifihoney")
-	cmd = os.system("chmod +x /usr/share/wifi-honey/wifi_honey.sh")
-	time.sleep(2)
-
 def burpsuite():
 	cmd = os.system("apt-get install -y curl")
 	cmd = os.system("curl https://portswigger.net/DownloadUpdate.ashx?Product=Free -o burpsuite_free.jar")
@@ -125,6 +103,22 @@ def burpsuite():
 	burp.write("java -jar -Xmx1024m /usr/share/burpsuite/burpsuite_free.jar")
 	burp.close()
 	cmd = os.system("chmod +x /usr/bin/burpsuite")
+	time.sleep(2)
+
+def casefile():
+	cmd = os.system("apt-get install -y wget")
+	cmd = os.system("wget \"http://www.paterva.com/cf211/MaltegoCaseFile.v2.1.1.8751.deb\" -O Casefile.deb")
+	cmd = os.system("dpkg -i Casefile.deb")
+	cmd = os.system("rm -rf Casefile.deb")
+	time.sleep(2)
+
+def crozono():
+	cmd = os.system("apt-get install -y git aircrack-ng reaver macchanger")
+	cmd = os.system("pip install --upgrade pip")
+	cmd = os.system("git clone https://github.com/crozono/crozono-free.git /usr/share/crozono")
+	cmd = os.system("cd /usr/share/crozono && pip install -r requirements.txt")
+	cmd = os.system("chmod +x /usr/share/crozono/crozono.py")
+	#cmd = os.system("ln -s /usr/share/crozono/crozono.py /usr/bin/crozono")
 	time.sleep(2)
 
 def dirbuster():
@@ -138,27 +132,21 @@ def dirbuster():
 	dirbust.close()
 	cmd = os.system("chmod +x /usr/bin/dirbuster")
 	time.sleep(2)
-	
-def websploit():
-	cmd = os.system("apt-get install -y wget")
-	cmd = os.system("wget \"http://downloads.sourceforge.net/project/websploit/WebSploit%20Framework%20V.3.0.0/WebSploit-Framework-3.0.0.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fwebsploit%2F&ts=1467510406&use_mirror=tenet\" -O Websploit.tar.gz")
-	cmd = os.system("tar -xf Websploit.tar.gz")
-	cmd = os.system("mv websploit /tmp/websploit")
-	cmd = os.system("rm -rf Websploit.tar.gz")
-	cmd = os.system("cd /tmp/websploit && ./install.sh")	
+
+def evilgrade():
+	cmd = os.system("apt-get install -y git librpc-xml-perl libdata-dump-perl")
+	cmd = os.system("git clone https://github.com/infobyte/evilgrade /usr/share/evilgrade")
+	cmd = os.system("chmod +x /usr/share/evilgrade/evilgrade")
+	dirbust = open("/usr/bin/evilgrade", "a+")
+	dirbust.write("cd /usr/share/evilgrade/ && ./evilgrade")
+	dirbust.close()
+	cmd = os.system("chmod +x /usr/bin/evilgrade")
 	time.sleep(2)
-	
-def wpscan():
-	cmd = os.system("sudo apt-get install -y git libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev build-essential libgmp-dev")
-	cmd = os.system("git clone https://github.com/wpscanteam/wpscan.git /usr/share/wpscan")
-	cmd = os.system("cd /usr/share/wpscan && sudo gem install bundler")
-	cmd = os.system("cd /usr/share/wpscan && bundle install --without test")
-	#wpscan = open("/usr/bin/wpscan", "a+")
-	#wpscan.write("cd /usr/share/wpscan/ && ls && echo \"Usage: ./wpscan.rb \"")
-	#wpscan.close()
-	#cmd = os.system("chmod +x /usr/bin/wpscan")
-	print "WPScan has been successfully installed on /usr/share/wpscan"
-	#cmd = os.system("ln -s /usr/share/wpscan/wpscan.rb /usr/bin/wpscan")
+
+def exploitdb():
+	cmd = os.system("apt-get install -y git")
+	cmd = os.system("git clone git://git.kali.org/packages/exploitdb.git /usr/share/exploitdb")
+	cmd = os.system("ln -s /usr/share/exploitdb/searchsploit /usr/bin/searchsploit")
 	time.sleep(2)
 
 def faraday ():
@@ -167,6 +155,41 @@ def faraday ():
 	cmd = os.system("easy_install -U setuptools")
 	cmd = os.system("cd /usr/share/faraday-dev && ./install.sh")
 	cmd = os.system("ln -s /usr/share/faraday-dev/faraday.py /usr/bin/python-faraday")
+	time.sleep(2)
+
+def findmyhash():
+	cmd = os.system("apt-get install -y wget")
+	cmd = os.system("wget \"http://findmyhash.googlecode.com/files/findmyhash.py\" -O findmyhash.py")
+	cmd = os.system("mkdir /usr/share/findmyhash")
+	cmd = os.system("mv findmyhash.py /usr/share/findmyhash/findmyhash.py")
+	findhash = open("/usr/bin/findmyhash", "a+")
+	findhash.write("python /usr/share/findmyhash/findmyhash.py")
+	findhash.close()
+	cmd = os.system("chmod +x /usr/bin/findmyhash")
+	time.sleep(2)
+
+def hashcat():
+	cmd = os.system("apt-get install wget p7zip-full")
+	cmd = os.system("wget \"https://hashcat.net/files/hashcat-3.00.7z\" -O Hashcat.7z")
+	cmd = os.system("7za x Hashcat.7z")
+	cmd = os.system("mv hashcat-3.00 /usr/share/hashcat")
+	cmd = os.system("rm -rf hashcat-3.00")
+	cmd = os.system("rm -rf Hashcat.7z")
+	if struct.calcsize("P") * 8 == 64:
+		cmd = os.system("ln -s /usr/share/hashcat/hashcat64.bin /usr/bin/hashcat")
+		time.sleep(2)
+	elif struct.calcsize("P") * 8 == 32:
+		cmd = os.system("ln -s /usr/share/hashcat/hashcat32.bin /usr/bin/hashcat")
+		time.sleep(2)
+	else:
+		print "Hashcat successfully installed in /usr/share/hashcat"
+		time.sleep(2)
+		
+def maltego():
+	cmd = os.system("apt-get install -y wget")
+	cmd = os.system("wget \"https://www.paterva.com/malv35/community/MaltegoCarbonCE.v3.5.3.deb\" -O Maltego.deb")
+	cmd = os.system("dpkg -i Maltego.deb")
+	cmd = os.system("rm -rf Maltego.deb")
 	time.sleep(2)
 	
 def metasploit():
@@ -199,94 +222,6 @@ def metasploit():
 		time.sleep(2)
 		main()
 
-def armitage():
-	cmd = os.system("apt-get install -y wget")
-	cmd = os.system("wget \"http://www.fastandeasyhacking.com/download/armitage150813.tgz\" -O Armitage.tgz")
-	cmd = os.system("tar -xvzf Armitage.tgz")
-	cmd = os.system("sudo mv armitage /opt/metasploit")
-	cmd = os.system("sudo chmod +x /opt/metasploit/armitage")
-	cmd = os.system("rm -rf Armitage.tgz")
-	armitage = open("/usr/bin/armitage", "a+")
-	armitage.write("java -XX:+AggressiveHeap -XX:+UseParallelGC -jar /opt/metasploit/armitage.jar $@")
-	armitage.close()
-	cmd = os.system("chmod +x /usr/bin/armitage")
-	time.sleep(2)
-	
-def beef():
-	#Install Requeriments
-	cmd = os.system("apt-get install curl git build-essential openssl libreadline6 libreadline6-dev zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev autoconf libc6-dev libncurses5-dev automake libtool bison subversion")
-	cmd = os.system("bash < <(curl -sk https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)")
-	cmd = os.system("echo '[[ -s \"$HOME/.rvm/scripts/rvm\" ]] && . \"$HOME/.rvm/scripts/rvm\"' >> ~/.bashrc")
-	cmd = os.system("source ~/.bashrc")
-	cmd = os.system("source $HOME/.rvm/scripts/rvm")
-	cmd = os.system("rvm install 1.9.2")
-	cmd = os.system("rvm use 1.9.2 --default")
-	#Install BeEF
-	cmd = os.system("git clone git://github.com/beefproject/beef.git /usr/share/beef")
-	cmd = os.system("cd /usr/share/beef && gem install bundler")
-	cmd = os.system("cd /usr/share/beef && bundle install")
-	#beef = open("/usr/bin/beef", "a+")
-	#beef.write("cd /usr/share/beef/ && ./beef")
-	#beef.close()
-	#cmd = os.system("chmod +x /usr/bin/beef")
-	print "Beef-XSS has been successfully installed on /usr/share/beef"
-	time.sleep(2)
-	
-def findmyhash():
-	cmd = os.system("apt-get install -y wget")
-	cmd = os.system("wget \"http://findmyhash.googlecode.com/files/findmyhash.py\" -O findmyhash.py")
-	cmd = os.system("mkdir /usr/share/findmyhash")
-	cmd = os.system("mv findmyhash.py /usr/share/findmyhash/findmyhash.py")
-	findhash = open("/usr/bin/findmyhash", "a+")
-	findhash.write("python /usr/share/findmyhash/findmyhash.py")
-	findhash.close()
-	cmd = os.system("chmod +x /usr/bin/findmyhash")
-	time.sleep(2)
-	
-def hashcat():
-	cmd = os.system("apt-get install wget p7zip-full")
-	cmd = os.system("wget \"https://hashcat.net/files/hashcat-3.00.7z\" -O Hashcat.7z")
-	cmd = os.system("7za x Hashcat.7z")
-	cmd = os.system("mv hashcat-3.00 /usr/share/hashcat")
-	cmd = os.system("rm -rf hashcat-3.00")
-	cmd = os.system("rm -rf Hashcat.7z")
-	if struct.calcsize("P") * 8 == 64:
-		cmd = os.system("ln -s /usr/share/hashcat/hashcat64.bin /usr/bin/hashcat")
-		time.sleep(2)
-	elif struct.calcsize("P") * 8 == 32:
-		cmd = os.system("ln -s /usr/share/hashcat/hashcat32.bin /usr/bin/hashcat")
-		time.sleep(2)
-	else:
-		print "Hashcat successfully installed in /usr/share/hashcat"
-		time.sleep(2)
-
-def evilgrade():
-	cmd = os.system("apt-get install -y git librpc-xml-perl libdata-dump-perl")
-	cmd = os.system("git clone https://github.com/infobyte/evilgrade /usr/share/evilgrade")
-	cmd = os.system("chmod +x /usr/share/evilgrade/evilgrade")
-	dirbust = open("/usr/bin/evilgrade", "a+")
-	dirbust.write("cd /usr/share/evilgrade/ && ./evilgrade")
-	dirbust.close()
-	cmd = os.system("chmod +x /usr/bin/evilgrade")
-	time.sleep(2)
-
-
-def webshells():
-	cmd = os.system("apt-get install -y git")
-	cmd = os.system("git clone git://git.kali.org/packages/webshells.git /usr/share/webshells")
-	time.sleep(2)
-
-
-def crozono():
-	cmd = os.system("apt-get install -y git aircrack-ng reaver macchanger")
-	cmd = os.system("pip install --upgrade pip")
-	cmd = os.system("git clone https://github.com/crozono/crozono-free.git /usr/share/crozono")
-	cmd = os.system("cd /usr/share/crozono && pip install -r requirements.txt")
-	cmd = os.system("chmod +x /usr/share/crozono/crozono.py")
-	#cmd = os.system("ln -s /usr/share/crozono/crozono.py /usr/bin/crozono")
-	time.sleep(2)
-
-
 def owaspZAP():
 	cmd = os.system("apt-get install -y wget")
 	cmd = os.system("wget \"https://github.com/zaproxy/zaproxy/releases/download/2.5.0/ZAP_2.5.0_Linux.tar.gz\" -O OWASP_ZAP.tar.gz")
@@ -296,6 +231,34 @@ def owaspZAP():
 	cmd = os.system("ln -s /usr/share/owasp-zap/zap.sh /usr/bin/owasp-zap")
 	time.sleep(2)
 	
+def pixieWPS():
+	cmd = os.system("apt-get install -y git build-essential libpcap-dev sqlite3 libsqlite3-dev libssl-dev unzip")
+	cmd = os.system("git clone https://github.com/wiire/pixiewps /tmp/pixiewps")
+	cmd = os.system("make -C /tmp/pixiewps/src")
+	cmd = os.system("make install -C /tmp/pixiewps/src")
+	cmd = os.system("rm -rf /tmp/pixiewps")
+	time.sleep(2)
+
+def reconNG():
+	cmd = os.system("apt-get install -y git")
+	cmd = os.system("git clone https://LaNMaSteR53@bitbucket.org/LaNMaSteR53/recon-ng.git /usr/share/recon-ng")
+	cmd = os.system("ln -s /usr/share/recon-ng/recon-ng /usr/bin/recon-ng")
+	time.sleep(2)
+	
+def setoolkit():
+	cmd = os.system("apt-get install -y git")
+	cmd = os.system("git clone https://github.com/trustedsec/social-engineer-toolkit/ /usr/share/set")
+	cmd = os.system("ln -s /usr/share/set/setoolkit /usr/bin/setoolkit")
+	time.sleep(2)
+
+def theharvester():
+	cmd = os.system("apt-get install -y git python-pip python-dev build-essential")
+	cmd = os.system("pip install requests")
+	cmd = os.system("git clone https://github.com/laramies/theHarvester /usr/share/theharvester")
+	cmd = os.system("ln -s /usr/share/theharvester/theHarvester.py /usr/bin/theHarvester")
+	cmd = os.system("chmod +x /usr/bin/theHarvester")
+	time.sleep(2)
+
 def vega():
 	cmd = os.system("apt-get install -y wget unzip libwebkitgtk-1.0")
 	if struct.calcsize("P") * 8 == 64:
@@ -314,7 +277,41 @@ def vega():
 		time.sleep(2)
 	else:
 		print "There has been a problem installing Vega!"
-		
+
+def webshells():
+	cmd = os.system("apt-get install -y git")
+	cmd = os.system("git clone git://git.kali.org/packages/webshells.git /usr/share/webshells")
+	time.sleep(2)
+	
+def websploit():
+	cmd = os.system("apt-get install -y wget")
+	cmd = os.system("wget \"http://downloads.sourceforge.net/project/websploit/WebSploit%20Framework%20V.3.0.0/WebSploit-Framework-3.0.0.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fwebsploit%2F&ts=1467510406&use_mirror=tenet\" -O Websploit.tar.gz")
+	cmd = os.system("tar -xf Websploit.tar.gz")
+	cmd = os.system("mv websploit /tmp/websploit")
+	cmd = os.system("rm -rf Websploit.tar.gz")
+	cmd = os.system("cd /tmp/websploit && ./install.sh")	
+	time.sleep(2)
+
+def wifihoney():
+	cmd = os.system("apt-get install -y git")
+	cmd = os.system("git clone git://git.kali.org/packages/wifi-honey.git /usr/share/wifi-honey")
+	cmd = os.system("ln -s /usr/share/wifi-honey/wifi_honey.sh /usr/bin/wifihoney")
+	cmd = os.system("chmod +x /usr/share/wifi-honey/wifi_honey.sh")
+	time.sleep(2)
+	
+def wpscan():
+	cmd = os.system("sudo apt-get install -y git libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev build-essential libgmp-dev")
+	cmd = os.system("git clone https://github.com/wpscanteam/wpscan.git /usr/share/wpscan")
+	cmd = os.system("cd /usr/share/wpscan && sudo gem install bundler")
+	cmd = os.system("cd /usr/share/wpscan && bundle install --without test")
+	#wpscan = open("/usr/bin/wpscan", "a+")
+	#wpscan.write("cd /usr/share/wpscan/ && ls && echo \"Usage: ./wpscan.rb \"")
+	#wpscan.close()
+	#cmd = os.system("chmod +x /usr/bin/wpscan")
+	print "WPScan has been successfully installed on /usr/share/wpscan"
+	#cmd = os.system("ln -s /usr/share/wpscan/wpscan.rb /usr/bin/wpscan")
+	time.sleep(2)
+
 def main():
 	while True:
 		print '''
