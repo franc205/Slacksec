@@ -332,7 +332,7 @@ def main():
 1) Essential Tools							5) Exploitation Tools
 2) Wireless Tools							6) Password Attacks	
 3) Web Hacking Tools						7) Reporting Tools
-4) Sniffing & Spoofing						8) Extra
+4) Sniffing & Spoofing
 
 0) All the tools
 
@@ -392,6 +392,12 @@ def main():
 2) Findmyhash									6) Ophcrack
 3) Hashcat										7) Samdump2
 4) Hydra
+
+0) Install All
+
+-----------------------------Reporting Tools-----------------------------
+1) Casefile										3) Maltego
+2) CutyCapt
 
 0) Install All
 
