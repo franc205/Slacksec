@@ -358,8 +358,6 @@ def main():
 			HELP()
 		elif mainChoice == "home":
 			print "You are already at Home!!!"
-		elif mainChoice == "exit":
-			exit()
 		else:
 			print "Please choose a valid option!!!"
 
