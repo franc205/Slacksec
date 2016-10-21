@@ -188,7 +188,7 @@ def hashcat():
 		time.sleep(2)
 		
 def maltego():
-	cmd = os.system("apt-get install -y wget")
+	cmd = os.system("apt-get install -y wget oracle-java7-installer")
 	cmd = os.system("wget \"https://www.paterva.com/malv35/community/MaltegoCarbonCE.v3.5.3.deb\" -O Maltego.deb")
 	cmd = os.system("dpkg -i Maltego.deb")
 	cmd = os.system("rm -rf Maltego.deb")
@@ -582,9 +582,9 @@ def essentialMenu():
 ---------------------------Essential Tools---------------------------
 1) Aircrack-NG						6) Netcat
 2) DSniff						7) Nmap
-3) Faraday						8) OWSAP Zap
+3) Faraday						8) OWASP Zap
 4) Hping3						9) SET
-5) Metaspoit + Armitage					10) Wireshark
+5) Metasploit + Armitage					10) Wireshark
 
 0) Install All
 	'''
