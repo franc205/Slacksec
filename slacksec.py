@@ -23,8 +23,11 @@ def intallAll():
 	faraday()
 	findmyhash()
 	hashcat()
+	libnfc()
 	maltego()
 	metasploit()
+	mfcuk()
+	mfok()
 	pixieWPS()
 	reconNG()
 	setoolkit()
@@ -34,7 +37,7 @@ def intallAll():
 	wifihoney()
 	wpscan()
 	time.sleep(2)
-	
+
 def armitage():
 	cmd = os.system("apt-get install -y wget")
 	cmd = os.system("wget \"http://www.fastandeasyhacking.com/download/armitage150813.tgz\" -O Armitage.tgz")
@@ -186,7 +189,30 @@ def hashcat():
 	else:
 		print "Hashcat successfully installed in /usr/share/hashcat"
 		time.sleep(2)
-		
+
+def libnfc():
+	cmd = os.system("apt-get install git libusb-dev dh-autoreconf autoconf automake libtool pkg-config")
+	cmd = os.system("git clone https://github.com/nfc-tools/libnfc.git /usr/share/nfctools/libnfc")
+	cmd = os.system("cd /usr/share/nfctools/libnfc && git checkout libnfc-1.7.1")
+	cmd = os.system("cd /usr/share/nfctools/libnfc && git clean -d -f -x")
+	cmd = os.system("cd /usr/share/nfctools/libnfc && git remote|grep -q anonscm||git remote add anonscm git://anonscm.debian.org/collab-maint/libnfc.git")
+	cmd = os.system("cd /usr/share/nfctools/libnfc && git fetch anonscm")
+	cmd = os.system("cd /usr/share/nfctools/libnfc && git checkout remotes/anonscm/master debian")
+	cmd = os.system("cd /usr/share/nfctools/libnfc && git reset")
+	cmd = os.system("cd /usr/share/nfctools/libnfc && dpkg-buildpackage -uc -us -b")
+	cmd = os.system("cd /usr/share/nfctools/libnfc && apt-get install libusb-0.1-4")
+	cmd = os.system("cd /usr/share/nfctools/libnfc && dpkg -i ../libnfc*.deb")
+	time.sleep(2)
+
+def libfreefare():
+	cmd = os.system("apt-get install git libusb-dev dh-autoreconf autoconf automake libtool libssl-dev pkg-config")
+	cmd = os.system("git clone https://github.com/nfc-tools/libfreefare.git /usr/share/nfctools/libfreefare")
+	cmd = os.system("cd /usr/share/nfctools/libfreefare && autoreconf -vis")
+	cmd = os.system("cd /usr/share/nfctools/libfreefare && ./configure --prefix=/usr")
+	cmd = os.system("cd /usr/share/nfctools/libfreefare && make && make install")
+	time.sleep(2)
+	
+
 def maltego():
 	cmd = os.system("apt-get install -y wget oracle-java7-installer")
 	cmd = os.system("wget \"https://www.paterva.com/malv35/community/MaltegoCarbonCE.v3.5.3.deb\" -O Maltego.deb")
@@ -195,6 +221,13 @@ def maltego():
 	time.sleep(2)
 	
 def metasploit():
+	cmd = os.system("apt-get install curl")
+	cmd = os.system("curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall")
+	cmd = os.system("chmod 755 msfinstall")
+	cmd = os.system("./msfinstall")
+	cmd = os.system("rm -rf msfinstall")
+
+def metasploitOLD():
 	cmd = os.system("sudo apt-get install -y nmap build-essential libreadline-dev  libssl-dev libpq5 libpq-dev libreadline5 libsqlite3-dev libpcap-dev openjdk-8-jre subversion git-core autoconf postgresql pgadmin3 curl zlib1g-dev libxml2-dev libxslt1-dev libyaml-dev curl ruby nmap")
 	print '\033[91m' + "Please write 'msf' as Password" + '\033[0m'
 	cmd = os.system("cd / && su postgres -c 'createuser msf -P -S -R -D'")
@@ -223,6 +256,22 @@ def metasploit():
 	else:
 		time.sleep(2)
 		main()
+
+def mfok():
+	cmd = os.system("apt-get install -y git libusb-dev dh-autoreconf autoconf automake libtool pkg-confi")
+	cmd = os.system("git clone https://github.com/nfc-tools/mfoc.git /usr/share/nfctools/mfok")
+	cmd = os.system("cd /usr/share/nfctools/mfok && autoreconf -vis")
+	cmd = os.system("cd /usr/share/nfctools/mfok && ./configure")
+	cmd = os.system("cd /usr/share/nfctools/mfok/src && make && make install")
+	time.sleep(2)
+
+def mfcuk():
+	cmd = os.system("apt-get install -y git libusb-dev dh-autoreconf autoconf automake libtool pkg-confi")
+	cmd = os.system("git clone https://github.com/nfc-tools/mfcuk.git /usr/share/nfctools/mfcuk")
+	cmd = os.system("cd /usr/share/nfctools/mfcuk && autoreconf -is")
+	cmd = os.system("cd /usr/share/nfctools/mfcuk && ./configure")
+	cmd = os.system("cd /usr/share/nfctools/mfcuk/src && make && make install")
+	time.sleep(2)
 
 def owaspZAP():
 	cmd = os.system("apt-get install -y wget")
@@ -334,7 +383,8 @@ def main():
 1) Essential Tools				5) Exploitation Tools
 2) Wireless Tools				6) Password Attacks	
 3) Web Hacking Tools				7) Reporting Tools
-4) Sniffing & Spoofing				8) HELP!
+4) Sniffing & Spoofing				8) NFC Hacking Tools
+9) HELP!
 
 0) All the tools
 			'''
@@ -356,6 +406,8 @@ def main():
 			elif mainChoice == "7":
 				reportMenu()
 			elif mainChoice == "8":
+				nfcMenu()
+			elif mainChoice == "9":
 				HELP()
 			elif mainChoice == "home":
 				print "You are already at Home!!!"
@@ -392,7 +444,7 @@ def allMenu():
 18) Dirbuster				40) Netcat							62) Wifi Honey
 19) Driftnet				41) Netdiscover						63) Wifite
 20) Dsniff				42) Nikto							64) Wireshark
-21) Etherape				43) OWASP Zap
+21) Etherape				43) OWASP ZAP					65) NFC Tools
 22) Ettercap				44) Ophcrack
 
 0) Install All
@@ -438,7 +490,7 @@ def allMenu():
 		elif mainChoice == "12":
 			blueranger()
 		elif mainChoice == "13":
-			print "Comming Soon!"
+			print "Coming Soon!"
 			#bluesnarfer()
 		elif mainChoice == "14":
 			burpsuite()
@@ -572,6 +624,12 @@ def allMenu():
 			time.sleep(2)
 		elif mainChoice == "64":
 			cmd = os.system("apt-get install -y wireshark")
+			time.sleep(2)
+		elif mainChoice == "65":
+			libnfc()
+			mfcuk()
+			mfok()
+			#libfreefare()
 			time.sleep(2)
 		else:
 			print "Please choose a valid option!!!"
@@ -962,6 +1020,45 @@ def reportMenu():
 		faraday()
 	elif mainChoice == "4":
 		maltego()
+	else:
+		print "Please choose a valid option!!!"
+		time.sleep(2)
+
+def nfcMenu():
+	print'''
+-------------------------------NFC Tools---------------------------------
+1) LibNFC									
+2) MFOK
+3) MFCUK
+4) Libfreefare (Coming Soon)
+
+
+0) Install All (Recomended)
+	'''
+
+	mainChoice = raw_input("Choose an option: ")
+	if mainChoice == "back":
+		main()
+	elif mainChoice == "home":
+		main()
+	elif mainChoice == "help":
+		HELP()
+	elif mainChoice == "0":
+		libnfc()
+		mfcuk()
+		mfok()
+		libfreefare()
+		time.sleep(2)
+	elif mainChoice == "1":
+		libnfc()
+	elif mainChoice == "2":
+		mfok()
+	elif mainChoice == "3":
+		mfcuk()
+	elif mainChoice == "4":
+		#libfreefare()
+		print "Coming Soon"
+		time.sleep(2)
 	else:
 		print "Please choose a valid option!!!"
 		time.sleep(2)
