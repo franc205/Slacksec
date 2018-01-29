@@ -1040,7 +1040,8 @@ def nfcMenu():
 1) LibNFC									
 2) MFOK
 3) MFCUK
-4) Libfreefare (Coming Soon)
+4) PCSC Tools
+5) Libfreefare (Coming Soon)
 
 
 0) Install All (Recomended)
@@ -1054,6 +1055,7 @@ def nfcMenu():
 	elif mainChoice == "help":
 		HELP()
 	elif mainChoice == "0":
+		cmd = os.system("apt-get install -y libccid pcscd libpcsclite1 libpcsclite-dev libpcsc-perl pcsc-tools libusb-dev && service pcscd start")
 		libnfc()
 		mfcuk()
 		mfok()
@@ -1066,6 +1068,8 @@ def nfcMenu():
 	elif mainChoice == "3":
 		mfcuk()
 	elif mainChoice == "4":
+		cmd = os.system("apt-get install -y libccid pcscd libpcsclite1 libpcsclite-dev libpcsc-perl pcsc-tools libusb-dev && service pcscd start")
+	elif mainChoice == "5":
 		#libfreefare()
 		print "Coming Soon"
 		time.sleep(2)
