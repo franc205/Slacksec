@@ -118,12 +118,13 @@ def casefile():
 	time.sleep(2)
 
 def crozono():
-	cmd = os.system("apt-get install -y git aircrack-ng reaver macchanger")
+	print "Crozono is no longer available :'C"
+	'''cmd = os.system("apt-get install -y git aircrack-ng reaver macchanger")
 	cmd = os.system("pip install --upgrade pip")
 	cmd = os.system("git clone https://github.com/crozono/crozono-free.git /usr/share/crozono")
 	cmd = os.system("cd /usr/share/crozono && pip install -r requirements.txt")
 	cmd = os.system("chmod +x /usr/share/crozono/crozono.py")
-	#cmd = os.system("ln -s /usr/share/crozono/crozono.py /usr/bin/crozono")
+	#cmd = os.system("ln -s /usr/share/crozono/crozono.py /usr/bin/crozono")'''
 	time.sleep(2)
 
 def dirbuster():
@@ -226,6 +227,12 @@ def metasploit():
 	cmd = os.system("chmod 755 msfinstall")
 	cmd = os.system("./msfinstall")
 	cmd = os.system("rm -rf msfinstall")
+	armitageChoice = raw_input("Do you want to install Armitage? [Y/n] ")
+	if armitageChoice == "Y" or armitageChoice == "y":
+		armitage()
+	else:
+		time.sleep(2)
+		main()
 
 def metasploitOLD():
 	cmd = os.system("sudo apt-get install -y nmap build-essential libreadline-dev  libssl-dev libpq5 libpq-dev libreadline5 libsqlite3-dev libpcap-dev openjdk-8-jre subversion git-core autoconf postgresql pgadmin3 curl zlib1g-dev libxml2-dev libxslt1-dev libyaml-dev curl ruby nmap")
@@ -366,59 +373,62 @@ def wpscan():
 #--------------------------------------------------------------Menu Functions--------------------------------------------------------------#
 
 def main():
-	try:
-		while True:
-			print '''
+	if os.geteuid() != 0:
+		exit("You need to have root privileges to run this script.\nPlease try again, this time using 'sudo'. Exiting.")
+	else:
+		try:
+			while True:
+				print '''
 
-  #####                               #####                
- #     # #        ##    ####  #    # #     # ######  ####  
- #       #       #  #  #    # #   #  #       #      #    # 
-  #####  #      #    # #      ####    #####  #####  #      
-       # #      ###### #      #  #         # #      #      
- #     # #      #    # #    # #   #  #     # #      #    # 
-  #####  ###### #    #  ####  #    #  #####  ######  ####  
-						By Franc205
+	  #####                               #####                
+	 #     # #        ##    ####  #    # #     # ######  ####  
+	 #       #       #  #  #    # #   #  #       #      #    # 
+	  #####  #      #    # #      ####    #####  #####  #      
+	       # #      ###### #      #  #         # #      #      
+	 #     # #      #    # #    # #   #  #     # #      #    # 
+	  #####  ###### #    #  ####  #    #  #####  ######  ####  
+							By Franc205
 
-----------------------------Choose a Category----------------------------
-1) Essential Tools				5) Exploitation Tools
-2) Wireless Tools				6) Password Attacks	
-3) Web Hacking Tools				7) Reporting Tools
-4) Sniffing & Spoofing				8) NFC Hacking Tools
-9) HELP!
+	----------------------------Choose a Category----------------------------
+	1) Essential Tools				5) Exploitation Tools
+	2) Wireless Tools				6) Password Attacks	
+	3) Web Hacking Tools				7) Reporting Tools
+	4) Sniffing & Spoofing				8) NFC Hacking Tools
+	9) HELP!
 
-0) All the tools
-			'''
-			mainChoice = raw_input("Choose an option: ")
-			if mainChoice == "0":
-				allMenu()
-			elif mainChoice == "1":
-				essentialMenu()
-			elif mainChoice == "2":
-				wirelessMenu()
-			elif mainChoice == "3":
-				webMenu()
-			elif mainChoice == "4":
-				sniffingMenu()
-			elif mainChoice == "5":
-				explotationMenu()
-			elif mainChoice == "6":
-				passwordMenu()
-			elif mainChoice == "7":
-				reportMenu()
-			elif mainChoice == "8":
-				nfcMenu()
-			elif mainChoice == "9":
-				HELP()
-			elif mainChoice == "home":
-				print "You are already at Home!!!"
-			else:
-				print "Please choose a valid option!!!"
-				time.sleep(2)
-	except KeyboardInterrupt:
-		print "See You!!!"
-	except Exception:
-		traceback.print_exc(file=sys.stdout)
-	sys.exit(0)
+	0) All the tools
+				'''
+				mainChoice = raw_input("Choose an option: ")
+				if mainChoice == "0":
+					allMenu()
+				elif mainChoice == "1":
+					essentialMenu()
+				elif mainChoice == "2":
+					wirelessMenu()
+				elif mainChoice == "3":
+					webMenu()
+				elif mainChoice == "4":
+					sniffingMenu()
+				elif mainChoice == "5":
+					explotationMenu()
+				elif mainChoice == "6":
+					passwordMenu()
+				elif mainChoice == "7":
+					reportMenu()
+				elif mainChoice == "8":
+					nfcMenu()
+				elif mainChoice == "9":
+					HELP()
+				elif mainChoice == "home":
+					print "You are already at Home!!!"
+				else:
+					print "Please choose a valid option!!!"
+					time.sleep(2)
+		except KeyboardInterrupt:
+			print "See You!!!"
+		except Exception:
+			traceback.print_exc(file=sys.stdout)
+		sys.exit(0)
 
 def allMenu():
 		print'''
@@ -1082,6 +1092,6 @@ Select the application you want to install and it will be automatically installe
 	*To exit the application use Ctrl + C
 --------------------------------------------------------------------------------
 	'''					
-	time.sleep(6)
+	time.sleep(4)
 
 main()
