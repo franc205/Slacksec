@@ -27,6 +27,7 @@ def intallAll():
 	maltego()
 	metasploit()
 	mfcuk()
+	mfdread()
 	mfok()
 	pixieWPS()
 	reconNG()
@@ -271,6 +272,12 @@ def mfok():
 	cmd = os.system("cd /usr/share/nfctools/mfok && ./configure")
 	cmd = os.system("cd /usr/share/nfctools/mfok/src && make && make install")
 	time.sleep(2)
+
+def mfdread():
+	cmd = os.system("apt-get install -y git python-pip")
+	cmd = os.system("git clone https://github.com/zhovner/mfdread.git /usr/share/nfctools/mfdread")
+	cmd = os.system("ln -s /usr/share/nfctools/mfdread/mfdread.py /usr/bin/mfdread")
+	#cmd = os.system("cd /usr/share/nfctools/mfok && ./configure")
 
 def mfcuk():
 	cmd = os.system("apt-get install -y git libusb-dev dh-autoreconf autoconf automake libtool pkg-confi")
@@ -1041,7 +1048,8 @@ def nfcMenu():
 2) MFOK
 3) MFCUK
 4) PCSC Tools
-5) Libfreefare (Coming Soon)
+5) Mfdread
+6) Libfreefare (Coming Soon)
 
 
 0) Install All (Recomended)
@@ -1060,6 +1068,7 @@ def nfcMenu():
 		mfcuk()
 		mfok()
 		libfreefare()
+		mfdread()
 		time.sleep(2)
 	elif mainChoice == "1":
 		libnfc()
@@ -1070,6 +1079,8 @@ def nfcMenu():
 	elif mainChoice == "4":
 		cmd = os.system("apt-get install -y libccid pcscd libpcsclite1 libpcsclite-dev libpcsc-perl pcsc-tools libusb-dev && service pcscd start")
 	elif mainChoice == "5":
+		mfdread()
+	elif mainChoice == "6":
 		#libfreefare()
 		print "Coming Soon"
 		time.sleep(2)
