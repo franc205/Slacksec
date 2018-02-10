@@ -277,7 +277,6 @@ def mfdread():
 	cmd = os.system("apt-get install -y git python-pip")
 	cmd = os.system("git clone https://github.com/zhovner/mfdread.git /usr/share/nfctools/mfdread")
 	cmd = os.system("ln -s /usr/share/nfctools/mfdread/mfdread.py /usr/bin/mfdread")
-	#cmd = os.system("cd /usr/share/nfctools/mfok && ./configure")
 
 def mfcuk():
 	cmd = os.system("apt-get install -y git libusb-dev dh-autoreconf autoconf automake libtool pkg-confi")
