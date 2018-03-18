@@ -153,8 +153,32 @@ def faraday():
 	cmd = os.system("git clone https://github.com/infobyte/faraday.git /usr/share/faraday-dev")
 	cmd = os.system("cd /usr/share/faraday-dev && ./install.sh")
 	cmd = os.system("cd /usr/share/faraday-dev && ./faraday-server.py")
-	cmd = os.system("cd /usr/share/faraday-dev && ./install.sh")
-	cmd = os.system("ln -s \"/usr/share/faraday-dev/faraday.py\" /usr/bin/faraday")
+	srv = open("/lib/systemd/system/python-faraday.service", "w+")
+	srv.write('''ice
+[Unit]
+Description=python-faraday Server
+Requires=couchdb.service
+After=couchdb.service
+
+[Service]
+Type=simple
+ExecStart=/usr/share/python-faraday/faraday-server.py
+
+[Install]
+WantedBy=multi-user.target
+''')
+	srv.close()
+	far = open("/usr/share/faraday-dev/python-faraday", "w+")
+	far.write('''#!/bin/sh
+systemctl start python-faraday
+sleep 3
+cd /usr/share/python-faraday && ./faraday.py "$@"
+systemctl stop python-faraday
+''')
+	far.close()
+	cmd = os.system("cp /usr/share/faraday-dev/python-faraday /usr/bin/python-faraday")
+	cmd = os.system("chmod +x /usr/bin/python-faraday")
+	#cmd = os.system("ln -s \"/usr/share/faraday-dev/faraday.py\" /usr/bin/faraday")
 	#user = os.system("who -H | sed \'1d\' | cut -d \" \" -f 1")
 	#user = subprocess.check_output("who -H | sed \'1d\' | cut -d \" \" -f 1", shell=True) #Obtiene el nombre de Usuario que se logueo
 	#user = user.replace('\n', '').replace('\r', '')
