@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import os
+import os, subprocess
 import sys, traceback
 import struct, time
 
@@ -8,7 +8,8 @@ import struct, time
 
 def intallAll():
 	cmd = os.system("apt-get install -y wget git curl")
-	cmd = os.system("apt-get install -y aircrack-ng sqlmap arduino wireshark sslstrip nmap hping3 amap-align kismet reaver cutycapt binwalk john proxychains apktool nikto ettercap-graphical etherape netdiscover driftnet netcat bkhive ophcrack hydra dsniff wifite foremost galleta guymager p0f volatility funkload slowhttptest sslsplit btscanner wifite samdump2 macchanger")
+	cmd = os.system("apt-get install -y gqrx-sdr aircrack-ng sqlmap arduino wireshark sslstrip nmap hping3 amap-align kismet reaver cutycapt binwalk john proxychains apktool nikto ettercap-graphical etherape netdiscover driftnet netcat bkhive ophcrack hydra dsniff wifite foremost galleta guymager p0f volatility funkload slowhttptest sslsplit btscanner wifite samdump2 macchanger")
+	armitage()
 	beef()
 	bluelog()
 	bluemaho()
@@ -16,11 +17,13 @@ def intallAll():
 	blueranger()
 	burpsuite()
 	casefile()
-	crozono()
+	gqrx()
 	dirbuster()
 	evilgrade()
 	exploitdb()
 	faraday()
+	fern()
+	fierce()
 	findmyhash()
 	hashcat()
 	libnfc()
@@ -47,7 +50,7 @@ def armitage():
 	cmd = os.system("sudo chmod +x /opt/metasploit/armitage")
 	cmd = os.system("rm -rf Armitage.tgz")
 	armitage = open("/usr/bin/armitage", "a+")
-	armitage.write("java -XX:+AggressiveHeap -XX:+UseParallelGC -jar /opt/metasploit/armitage.jar $@")
+	armitage.write("java -XX:+AggressiveHeap -XX:+UseParallelGC -jar /opt/metasploit/armitage.jar $@")	
 	armitage.close()
 	cmd = os.system("chmod +x /usr/bin/armitage")
 	time.sleep(2)
@@ -113,20 +116,14 @@ def burpsuite():
 
 def casefile():
 	cmd = os.system("apt-get install -y wget")
-	cmd = os.system("wget \"http://www.paterva.com/cf211/MaltegoCaseFile.v2.1.1.8751.deb\" -O Casefile.deb")
+	cmd = os.system("wget \"https://www.paterva.com/malv41/maltego_v4.1.0.10552.deb\" -O Casefile.deb")
 	cmd = os.system("dpkg -i Casefile.deb")
 	cmd = os.system("rm -rf Casefile.deb")
 	time.sleep(2)
 
-def crozono():
-	print "Crozono is no longer available :'C"
-	'''cmd = os.system("apt-get install -y git aircrack-ng reaver macchanger")
-	cmd = os.system("pip install --upgrade pip")
-	cmd = os.system("git clone https://github.com/crozono/crozono-free.git /usr/share/crozono")
-	cmd = os.system("cd /usr/share/crozono && pip install -r requirements.txt")
-	cmd = os.system("chmod +x /usr/share/crozono/crozono.py")
-	#cmd = os.system("ln -s /usr/share/crozono/crozono.py /usr/bin/crozono")'''
-	time.sleep(2)
+def gqrx():
+	 cmd = os.system("sudo apt-get install gqrx-sdr")
+	 time.sleep(2)
 
 def dirbuster():
 	cmd = os.system("apt-get install -y wget")
@@ -141,14 +138,15 @@ def dirbuster():
 	time.sleep(2)
 
 def evilgrade():
-	cmd = os.system("apt-get install -y git librpc-xml-perl libdata-dump-perl")
+	print "Lo siento evilgrade esta pasado de moda"
+	'''cmd = os.system("apt-get install -y git librpc-xml-perl libdata-dump-perl")
 	cmd = os.system("git clone https://github.com/infobyte/evilgrade /usr/share/evilgrade")
 	cmd = os.system("chmod +x /usr/share/evilgrade/evilgrade")
 	dirbust = open("/usr/bin/evilgrade", "a+")
 	dirbust.write("cd /usr/share/evilgrade/ && ./evilgrade")
 	dirbust.close()
 	cmd = os.system("chmod +x /usr/bin/evilgrade")
-	time.sleep(2)
+	time.sleep(2)'''
 
 def exploitdb():
 	cmd = os.system("apt-get install -y git")
@@ -157,12 +155,36 @@ def exploitdb():
 	time.sleep(2)
 
 def faraday ():
-	cmd = os.system("apt-get install -y git")
-	cmd = os.system("git clone https://github.com/infobyte/faraday.git /usr/share/faraday-dev")
+	cmd = os.system("apt-get install -y git python-pip curl sudo")
+	cmd = os.system("git clone https://github.com/infobyte/faraday.git /usr/share/python-faraday")
+	cmd = os.system("chmod +x /usr/share/python-faraday/install.sh")
+	cmd = os.system("cd /usr/share/python-faraday && ./install.sh")
 	cmd = os.system("easy_install -U setuptools")
-	cmd = os.system("cd /usr/share/faraday-dev && ./install.sh")
-	cmd = os.system("ln -s /usr/share/faraday-dev/faraday.py /usr/bin/python-faraday")
+	cmd = os.system("chmod +x /usr/bin/python-faraday")
+	#user = os.system("who -H | sed \'1d\' | cut -d \" \" -f 1")
+	user = subprocess.check_output("who -H | sed \'1d\' | cut -d \" \" -f 1", shell=True) #Obtiene el nombre de Usuario que se logueo
+	user = user.replace('\n', '').replace('\r', '')
+	cmd = os.system("mv/home/%s/faraday/python-faraday /usr/bin/python-faraday" % user)
+	cmd = os.system("mv /home/%s/faraday/python-faraday.service /lib/systemd/system/python-faraday.service" % user)
+	cmd = os.system("mv /home/%s/faraday/install.sh /usr/share/python-faraday" % user)
 	time.sleep(2)
+
+def fern():
+	cmd = os.system("apt-get install -y python-qt4 macchanger xterm aircrack-ng subversion python-scapy")
+	cmd = os.system("git clone https://github.com/savio-code/fern-wifi-cracker.git /usr/share/Fern-wifi-cracker")
+	cmd = os.system("cd /usr/share/Fern-wifi-cracker/Fern-Wifi-Cracker")
+	cmd = os.system("mv /usr/share/Fern-wifi-cracker/Fern-Wifi-Cracker /usr/share/fern-wifi-cracker/")
+	cmd = os.system("rm -rf /usr/share/Fern-wifi-cracker")
+	time.sleep(2)
+
+def fierce():
+	cmd = os.system("apt-get install -y git python3-pip")
+	cmd = os.system("sudo cpan -i Net::DNS")
+	cmd = os.system("git clone  \"https://github.com/davidpepper/fierce-domain-scanner.git\" /usr/share/fierce")
+	cmd = os.system("sudo chmod +x /usr/share/fierce/fierce.pl")
+	cmd = os.system("sudo mv /usr/share/fierce/fierce.pl /usr/bin/fierce")
+	time.sleep(2)
+
 
 def findmyhash():
 	cmd = os.system("apt-get install -y wget")
@@ -177,7 +199,7 @@ def findmyhash():
 
 def hashcat():
 	cmd = os.system("apt-get install wget p7zip-full")
-	cmd = os.system("wget \"https://hashcat.net/files/hashcat-3.00.7z\" -O Hashcat.7z")
+	cmd = os.system("wget \"https://hashcat.net/files/hashcat-4.1.0.7z\" -O Hashcat.7z")
 	cmd = os.system("7za x Hashcat.7z")
 	cmd = os.system("mv hashcat-3.00 /usr/share/hashcat")
 	cmd = os.system("rm -rf hashcat-3.00")
@@ -214,10 +236,9 @@ def libfreefare():
 	cmd = os.system("cd /usr/share/nfctools/libfreefare && make && make install")
 	time.sleep(2)
 	
-
 def maltego():
-	cmd = os.system("apt-get install -y wget oracle-java7-installer")
-	cmd = os.system("wget \"https://www.paterva.com/malv35/community/MaltegoCarbonCE.v3.5.3.deb\" -O Maltego.deb")
+	cmd = os.system("apt-get install -y wget")
+	cmd = os.system("wget \"https://www.paterva.com/malv41/maltego_v4.1.0.10552.deb\" -O Maltego.deb")
 	cmd = os.system("dpkg -i Maltego.deb")
 	cmd = os.system("rm -rf Maltego.deb")
 	time.sleep(2)
@@ -288,7 +309,7 @@ def mfcuk():
 
 def owaspZAP():
 	cmd = os.system("apt-get install -y wget")
-	cmd = os.system("wget \"https://github.com/zaproxy/zaproxy/releases/download/2.5.0/ZAP_2.5.0_Linux.tar.gz\" -O OWASP_ZAP.tar.gz")
+	cmd = os.system("wget \"https://github.com/zaproxy/zaproxy/releases/download/2.7.0/ZAP_2.7.0_Linux.tar.gz\" -O OWASP_ZAP.tar.gz")
 	cmd = os.system("tar -xvzf OWASP_ZAP.tar.gz")
 	cmd = os.system("mv ZAP_2.5.0 /usr/share/owasp-zap")
 	cmd = os.system("rm -rf OWASP_ZAP.tar.gz")
@@ -368,13 +389,17 @@ def wpscan():
 	cmd = os.system("git clone https://github.com/wpscanteam/wpscan.git /usr/share/wpscan")
 	cmd = os.system("cd /usr/share/wpscan && sudo gem install bundler")
 	cmd = os.system("cd /usr/share/wpscan && bundle install --without test")
+	cmd = os.system("ln -s "/usr/share/wpscan/wpscan.rb" /usr/bin/wpscan")
+	cmd = os.system("chmod +x /usr/bin/wpscan")
+	'''cmd = os.system("echo  '#!/bin/bash ' >>  /usr/bin/wpscan; echo 'cd /usr/share/wpscan/ && ./wpscan.rb \'$@\' >>  /usr/bin/wpscan '; ")'''
+	#cmd = os.system("chmod +x /usr/bin/wpscan")
 	#wpscan = open("/usr/bin/wpscan", "a+")
 	#wpscan.write("cd /usr/share/wpscan/ && ls && echo \"Usage: ./wpscan.rb \"")
 	#wpscan.close()
-	#cmd = os.system("chmod +x /usr/bin/wpscan")
+	#print "mv /home/user/wpscan/wpscan /usr/bin/wpscan"
 	print "WPScan has been successfully installed on /usr/share/wpscan"
-	#cmd = os.system("ln -s /usr/share/wpscan/wpscan.rb /usr/bin/wpscan")
 	time.sleep(2)
+
 
 #--------------------------------------------------------------Menu Functions--------------------------------------------------------------#
 
@@ -440,28 +465,28 @@ def allMenu():
 		print'''
 -------------------------------------------All The Tools-------------------------------------------
 
-1) Aircrack-ng				23) Evilgrade						45) PixieWPS
-2) Amap					24) ExploitDB						46) Proxychains
-3) Apktool				25) Faraday							47) P0F
-4) Arduino				26) Findmyhash						48) Reaver
-5) BTScanner				27) Foremost						49) Recon-ng
-6) BeEF					28) Funkload						50) SET
-7) Binwalk				29) Galleta							51) SQLMap
-8) Bkhive				30) Guymager						52) SSLSplit
-9) Bluelog				31) Hashcat							53) SSLstrip
-10) Bluemaho				32) Hping3							54) Samdump2
-11) Bluepot				33) Hydra							55) SlowHTTPTest
-12) Blueranger				34) John the ripper					56) TheHarvester
-13) Bluesnarfer				35) Kismet							57) Vega
-14) BurpSuite				36) Macchanger						58) Volatility
-15) Casefile				37) Maltego							59) WPScaner
-16) Crozono				38) Metaspoit + Armitage			60) Webshells
-17) CutyCapt				39) NMap							61) Websploit
-18) Dirbuster				40) Netcat							62) Wifi Honey
-19) Driftnet				41) Netdiscover						63) Wifite
-20) Dsniff				42) Nikto							64) Wireshark
+1) Aircrack-ng				23) Evilgrade				     	45) PixieWPS
+2) Amap					24) ExploitDB				        46) Proxychains
+3) Apktool				25) Faraday				        47) P0F
+4) Arduino				26) Findmyhash			                48) Reaver
+5) BTScanner				27) Foremost	                                49) Recon-ng
+6) BeEF					28) Funkload		                        50) SET
+7) Binwalk				29) Galleta			                51) SQLMap
+8) Bkhive				30) Guymager		                        52) SSLSplit
+9) Bluelog				31) Hashcat		                        53) SSLstrip
+10) Bluemaho				32) Hping3	                                54) Samdump2
+11) Bluepot				33) Hydra		                        55) SlowHTTPTest
+12) Blueranger				34) John the ripper				56) TheHarvester
+13) Bluesnarfer				35) Kismet		                        57) Vega
+14) BurpSuite				36) Macchanger					58) Volatility
+15) Casefile				37) Maltego			                59) WPScaner
+16) gqrx				38) Metaspoit + Armitage	                60) Webshells
+17) CutyCapt				39) NMap				        61) Websploit
+18) Dirbuster				40) Netcat		                        62) Wifi Honey
+19) Driftnet				41) Netdiscover				        63) Wifite
+20) Dsniff				42) Nikto	                                64) Wireshark
 21) Etherape				43) OWASP ZAP					65) NFC Tools
-22) Ettercap				44) Ophcrack
+22) Ettercap				44) Ophcrack				        66) Fierce
 
 0) Install All
 '''
@@ -513,7 +538,7 @@ def allMenu():
 		elif mainChoice == "15":
 			casefile()
 		elif mainChoice == "16":
-			crozono()
+			gqrx()
 		elif mainChoice == "17":
 			cmd = os.system("apt-get install -y cutycapt")
 			time.sleep(2)
@@ -645,8 +670,11 @@ def allMenu():
 			libnfc()
 			mfcuk()
 			mfok()
-			#libfreefare()
+			libfreefare()
+			mfdread()
 			time.sleep(2)
+		elif mainChoice == "66":
+			fierce()
 		else:
 			print "Please choose a valid option!!!"
 			time.sleep(2)
@@ -654,7 +682,7 @@ def allMenu():
 def essentialMenu():
 	print'''
 ---------------------------Essential Tools---------------------------
-1) Aircrack-NG						6) Netcat
+1) Aircrack-NG						6) Netcat            
 2) DSniff						7) Nmap
 3) Faraday						8) OWASP Zap
 4) Hping3						9) SET
@@ -709,13 +737,13 @@ def essentialMenu():
 def wirelessMenu():
 	print'''
 -----------------------------Wireless Tools------------------------------
-1) Aircrack-NG						8) Crozono
+1) Aircrack-NG						8) GQRX
 2) Bluelog						9) Kismet
 3) Bluemaho						10) PixieWPS
 4) Bluepot						11) Reaver
 5) Blueranger						12) Wifite
 6) Bluesnarfer						13) Wifi Honey
-7) BTScanner		
+7) BTScanner		                                14) Fern-Wifi-Cracker
 
 0) Install All
 '''
@@ -732,7 +760,7 @@ def wirelessMenu():
 		bluemaho()
 		bluepot()
 		blueranger()
-		crozono()
+		gqrx()
 		pixieWPS()
 		wifihoney()
 		time.sleep(2)
@@ -754,7 +782,7 @@ def wirelessMenu():
 		print "Comming Soon!"
 		time.sleep(2)
 	elif mainChoice == "8":
-		crozono()
+		gqrx()
 	elif mainChoice == "9":
 		cmd = os.system("apt-get install -y kismet")
 		time.sleep(2)
@@ -768,6 +796,8 @@ def wirelessMenu():
 		time.sleep(2)
 	elif mainChoice == "13":
 		wifihoney()
+	elif mainChoice == "14":
+		fern()
 	else:
 		print "Please choose a valid option!!!"
 		time.sleep(2)
@@ -913,7 +943,7 @@ def explotationMenu():
 2) Evilgrade					6) Metaspoit + Armitage
 3) ExploitDB					7) SET
 4) Faraday					8) SQLmap			
-
+9) Fierce
 0) Install All
 	'''
 
@@ -951,6 +981,8 @@ def explotationMenu():
 	elif mainChoice == "8":
 		cmd = os.system("apt-get install -y sqlmap")
 		time.sleep(2)
+	elif mainChoice == "9":
+		fierce()
 	else:
 		print "Please choose a valid option!!!"
 		time.sleep(2)
