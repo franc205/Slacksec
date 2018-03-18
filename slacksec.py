@@ -389,7 +389,7 @@ def wpscan():
 	cmd = os.system("git clone https://github.com/wpscanteam/wpscan.git /usr/share/wpscan")
 	cmd = os.system("cd /usr/share/wpscan && sudo gem install bundler")
 	cmd = os.system("cd /usr/share/wpscan && bundle install --without test")
-	cmd = os.system("ln -s "/usr/share/wpscan/wpscan.rb" /usr/bin/wpscan")
+	cmd = os.system("ln -s \"/usr/share/wpscan/wpscan.rb\" /usr/bin/wpscan")
 	cmd = os.system("chmod +x /usr/bin/wpscan")
 	'''cmd = os.system("echo  '#!/bin/bash ' >>  /usr/bin/wpscan; echo 'cd /usr/share/wpscan/ && ./wpscan.rb \'$@\' >>  /usr/bin/wpscan '; ")'''
 	#cmd = os.system("chmod +x /usr/bin/wpscan")
