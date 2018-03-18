@@ -17,7 +17,6 @@ def intallAll():
 	blueranger()
 	burpsuite()
 	casefile()
-	gqrx()
 	dirbuster()
 	evilgrade()
 	exploitdb()
@@ -121,10 +120,6 @@ def casefile():
 	cmd = os.system("rm -rf Casefile.deb")
 	time.sleep(2)
 
-def gqrx():
-	 cmd = os.system("sudo apt-get install gqrx-sdr")
-	 time.sleep(2)
-
 def dirbuster():
 	cmd = os.system("apt-get install -y wget")
 	cmd = os.system("wget \"http://downloads.sourceforge.net/project/dirbuster/DirBuster%20%28jar%20%2B%20lists%29/1.0-RC1/DirBuster-1.0-RC1.tar.bz2?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fdirbuster%2Ffiles%2FDirBuster%2520%2528jar%2520%252B%2520lists%2529%2F1.0-RC1%2F&ts=1370262745&use_mirror=nchc\" -O DirBuster.tar.bz2")
@@ -138,15 +133,14 @@ def dirbuster():
 	time.sleep(2)
 
 def evilgrade():
-	print "Lo siento evilgrade esta pasado de moda"
-	'''cmd = os.system("apt-get install -y git librpc-xml-perl libdata-dump-perl")
+	cmd = os.system("apt-get install -y git librpc-xml-perl libdata-dump-perl")
 	cmd = os.system("git clone https://github.com/infobyte/evilgrade /usr/share/evilgrade")
 	cmd = os.system("chmod +x /usr/share/evilgrade/evilgrade")
 	dirbust = open("/usr/bin/evilgrade", "a+")
 	dirbust.write("cd /usr/share/evilgrade/ && ./evilgrade")
 	dirbust.close()
 	cmd = os.system("chmod +x /usr/bin/evilgrade")
-	time.sleep(2)'''
+	time.sleep(2)
 
 def exploitdb():
 	cmd = os.system("apt-get install -y git")
@@ -154,25 +148,24 @@ def exploitdb():
 	cmd = os.system("ln -s /usr/share/exploitdb/searchsploit /usr/bin/searchsploit")
 	time.sleep(2)
 
-def faraday ():
+def faraday():
 	cmd = os.system("apt-get install -y git python-pip curl sudo")
-	cmd = os.system("git clone https://github.com/infobyte/faraday.git /usr/share/python-faraday")
-	cmd = os.system("chmod +x /usr/share/python-faraday/install.sh")
-	cmd = os.system("cd /usr/share/python-faraday && ./install.sh")
-	cmd = os.system("easy_install -U setuptools")
-	cmd = os.system("chmod +x /usr/bin/python-faraday")
+	cmd = os.system("git clone https://github.com/infobyte/faraday.git /usr/share/faraday-dev")
+	cmd = os.system("cd /usr/share/faraday-dev && ./install.sh")
+	cmd = os.system("cd /usr/share/faraday-dev && ./faraday-server.py")
+	cmd = os.system("cd /usr/share/faraday-dev && ./install.sh")
+	cmd = os.system("ln -s \"/usr/share/faraday-dev/faraday.py\" /usr/bin/faraday")
 	#user = os.system("who -H | sed \'1d\' | cut -d \" \" -f 1")
-	user = subprocess.check_output("who -H | sed \'1d\' | cut -d \" \" -f 1", shell=True) #Obtiene el nombre de Usuario que se logueo
-	user = user.replace('\n', '').replace('\r', '')
-	cmd = os.system("mv/home/%s/faraday/python-faraday /usr/bin/python-faraday" % user)
-	cmd = os.system("mv /home/%s/faraday/python-faraday.service /lib/systemd/system/python-faraday.service" % user)
-	cmd = os.system("mv /home/%s/faraday/install.sh /usr/share/python-faraday" % user)
+	#user = subprocess.check_output("who -H | sed \'1d\' | cut -d \" \" -f 1", shell=True) #Obtiene el nombre de Usuario que se logueo
+	#user = user.replace('\n', '').replace('\r', '')
+	#cmd = os.system("cp /usr/share/python-faraday/python-faraday /usr/bin/python-faraday")
+	#cmd = os.system("cp /usr/share/python-faraday/python-faraday.service /lib/systemd/system/python-faraday.service")
+	#cmd = os.system("mv /home/%s/faraday/install.sh /usr/share/python-faraday" % user)
 	time.sleep(2)
 
 def fern():
 	cmd = os.system("apt-get install -y python-qt4 macchanger xterm aircrack-ng subversion python-scapy")
 	cmd = os.system("git clone https://github.com/savio-code/fern-wifi-cracker.git /usr/share/Fern-wifi-cracker")
-	cmd = os.system("cd /usr/share/Fern-wifi-cracker/Fern-Wifi-Cracker")
 	cmd = os.system("mv /usr/share/Fern-wifi-cracker/Fern-Wifi-Cracker /usr/share/fern-wifi-cracker/")
 	cmd = os.system("rm -rf /usr/share/Fern-wifi-cracker")
 	time.sleep(2)
@@ -480,7 +473,7 @@ def allMenu():
 13) Bluesnarfer				35) Kismet		                        57) Vega
 14) BurpSuite				36) Macchanger					58) Volatility
 15) Casefile				37) Maltego			                59) WPScaner
-16) gqrx				38) Metaspoit + Armitage	                60) Webshells
+16) Gqrx				38) Metaspoit + Armitage	                60) Webshells
 17) CutyCapt				39) NMap				        61) Websploit
 18) Dirbuster				40) Netcat		                        62) Wifi Honey
 19) Driftnet				41) Netdiscover				        63) Wifite
@@ -538,7 +531,7 @@ def allMenu():
 		elif mainChoice == "15":
 			casefile()
 		elif mainChoice == "16":
-			gqrx()
+			cmd = os.system("apt-get install -y gqrx-sdr")
 		elif mainChoice == "17":
 			cmd = os.system("apt-get install -y cutycapt")
 			time.sleep(2)
